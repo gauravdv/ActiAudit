@@ -14,7 +14,7 @@ namespace ImageScroller
 {
     public partial class frm_Popoup : Form
     {
-        string db_Server;
+        string db_Server;//for server
         string db_Name;
         string db_UserID;
         string db_Password;       
@@ -172,6 +172,11 @@ namespace ImageScroller
             //this.Close();
             //frm_IamgeS = new ImageScrollerForm();
           
+        }
+
+        private void frm_Popoup_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _ImageScrollerForm.playScroller();
         }
     }
    }

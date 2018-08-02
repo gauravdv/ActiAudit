@@ -121,11 +121,14 @@
   <data name="x1Black40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\x1Black40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="x8button40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\x8button40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="x16Black40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\x16Black40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="x32button40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\x32button40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Chk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pausebutton40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pausebutton40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,8 +175,8 @@
   <data name="noimage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\noimage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="x32button40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\x32button40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="x8button40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\x8button40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Check_mark2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Check_mark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,7 +193,7 @@
   <data name="PlayBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PlayBack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Chk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Chk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Btn_A" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Btn_A.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -134,10 +134,10 @@
             // btn_browser9
             // 
             this.btn_browser9.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_browser9.Location = new System.Drawing.Point(450, 426);
+            this.btn_browser9.Location = new System.Drawing.Point(449, 426);
             this.btn_browser9.Margin = new System.Windows.Forms.Padding(10);
             this.btn_browser9.Name = "btn_browser9";
-            this.btn_browser9.Size = new System.Drawing.Size(99, 34);
+            this.btn_browser9.Size = new System.Drawing.Size(98, 34);
             this.btn_browser9.TabIndex = 24;
             this.btn_browser9.Text = "Browse";
             this.btn_browser9.UseVisualStyleBackColor = false;
@@ -146,10 +146,10 @@
             // btn_browser8
             // 
             this.btn_browser8.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_browser8.Location = new System.Drawing.Point(450, 376);
+            this.btn_browser8.Location = new System.Drawing.Point(449, 376);
             this.btn_browser8.Margin = new System.Windows.Forms.Padding(10);
             this.btn_browser8.Name = "btn_browser8";
-            this.btn_browser8.Size = new System.Drawing.Size(99, 28);
+            this.btn_browser8.Size = new System.Drawing.Size(98, 28);
             this.btn_browser8.TabIndex = 21;
             this.btn_browser8.Text = "Browse";
             this.btn_browser8.UseVisualStyleBackColor = false;
@@ -158,10 +158,10 @@
             // btn_browser7
             // 
             this.btn_browser7.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_browser7.Location = new System.Drawing.Point(450, 324);
+            this.btn_browser7.Location = new System.Drawing.Point(449, 324);
             this.btn_browser7.Margin = new System.Windows.Forms.Padding(10);
             this.btn_browser7.Name = "btn_browser7";
-            this.btn_browser7.Size = new System.Drawing.Size(99, 30);
+            this.btn_browser7.Size = new System.Drawing.Size(98, 30);
             this.btn_browser7.TabIndex = 18;
             this.btn_browser7.Text = "Browse";
             this.btn_browser7.UseVisualStyleBackColor = false;
@@ -170,10 +170,10 @@
             // btn_browser6
             // 
             this.btn_browser6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_browser6.Location = new System.Drawing.Point(450, 274);
+            this.btn_browser6.Location = new System.Drawing.Point(449, 274);
             this.btn_browser6.Margin = new System.Windows.Forms.Padding(10);
             this.btn_browser6.Name = "btn_browser6";
-            this.btn_browser6.Size = new System.Drawing.Size(99, 28);
+            this.btn_browser6.Size = new System.Drawing.Size(98, 28);
             this.btn_browser6.TabIndex = 15;
             this.btn_browser6.Text = "Browse";
             this.btn_browser6.UseVisualStyleBackColor = false;
@@ -182,10 +182,10 @@
             // btn_browser5
             // 
             this.btn_browser5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_browser5.Location = new System.Drawing.Point(450, 222);
+            this.btn_browser5.Location = new System.Drawing.Point(449, 222);
             this.btn_browser5.Margin = new System.Windows.Forms.Padding(10);
             this.btn_browser5.Name = "btn_browser5";
-            this.btn_browser5.Size = new System.Drawing.Size(99, 30);
+            this.btn_browser5.Size = new System.Drawing.Size(98, 30);
             this.btn_browser5.TabIndex = 12;
             this.btn_browser5.Text = "Browse";
             this.btn_browser5.UseVisualStyleBackColor = false;
@@ -194,10 +194,10 @@
             // btn_browser4
             // 
             this.btn_browser4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_browser4.Location = new System.Drawing.Point(450, 168);
+            this.btn_browser4.Location = new System.Drawing.Point(449, 168);
             this.btn_browser4.Margin = new System.Windows.Forms.Padding(10);
             this.btn_browser4.Name = "btn_browser4";
-            this.btn_browser4.Size = new System.Drawing.Size(99, 32);
+            this.btn_browser4.Size = new System.Drawing.Size(98, 32);
             this.btn_browser4.TabIndex = 9;
             this.btn_browser4.Text = "Browse";
             this.btn_browser4.UseVisualStyleBackColor = false;
@@ -206,10 +206,10 @@
             // btn_browser3
             // 
             this.btn_browser3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_browser3.Location = new System.Drawing.Point(450, 114);
+            this.btn_browser3.Location = new System.Drawing.Point(449, 114);
             this.btn_browser3.Margin = new System.Windows.Forms.Padding(10);
             this.btn_browser3.Name = "btn_browser3";
-            this.btn_browser3.Size = new System.Drawing.Size(99, 32);
+            this.btn_browser3.Size = new System.Drawing.Size(98, 32);
             this.btn_browser3.TabIndex = 6;
             this.btn_browser3.Text = "Browse";
             this.btn_browser3.UseVisualStyleBackColor = false;
@@ -218,10 +218,10 @@
             // btn_browser2
             // 
             this.btn_browser2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_browser2.Location = new System.Drawing.Point(450, 62);
+            this.btn_browser2.Location = new System.Drawing.Point(449, 62);
             this.btn_browser2.Margin = new System.Windows.Forms.Padding(10);
             this.btn_browser2.Name = "btn_browser2";
-            this.btn_browser2.Size = new System.Drawing.Size(99, 30);
+            this.btn_browser2.Size = new System.Drawing.Size(98, 30);
             this.btn_browser2.TabIndex = 3;
             this.btn_browser2.Text = "Browse";
             this.btn_browser2.UseVisualStyleBackColor = false;
@@ -233,7 +233,7 @@
             this.channel9_txt.BackColor = System.Drawing.SystemColors.ControlLight;
             this.channel9_txt.Location = new System.Drawing.Point(97, 432);
             this.channel9_txt.Name = "channel9_txt";
-            this.channel9_txt.Size = new System.Drawing.Size(340, 23);
+            this.channel9_txt.Size = new System.Drawing.Size(339, 23);
             this.channel9_txt.TabIndex = 25;
             // 
             // channel8_txt
@@ -242,7 +242,7 @@
             this.channel8_txt.BackColor = System.Drawing.SystemColors.ControlLight;
             this.channel8_txt.Location = new System.Drawing.Point(97, 379);
             this.channel8_txt.Name = "channel8_txt";
-            this.channel8_txt.Size = new System.Drawing.Size(340, 23);
+            this.channel8_txt.Size = new System.Drawing.Size(339, 23);
             this.channel8_txt.TabIndex = 22;
             // 
             // channel7_txt
@@ -251,7 +251,7 @@
             this.channel7_txt.BackColor = System.Drawing.SystemColors.ControlLight;
             this.channel7_txt.Location = new System.Drawing.Point(97, 328);
             this.channel7_txt.Name = "channel7_txt";
-            this.channel7_txt.Size = new System.Drawing.Size(340, 23);
+            this.channel7_txt.Size = new System.Drawing.Size(339, 23);
             this.channel7_txt.TabIndex = 19;
             // 
             // channel6_txt
@@ -260,7 +260,7 @@
             this.channel6_txt.BackColor = System.Drawing.SystemColors.ControlLight;
             this.channel6_txt.Location = new System.Drawing.Point(97, 277);
             this.channel6_txt.Name = "channel6_txt";
-            this.channel6_txt.Size = new System.Drawing.Size(340, 23);
+            this.channel6_txt.Size = new System.Drawing.Size(339, 23);
             this.channel6_txt.TabIndex = 16;
             // 
             // channel5_txt
@@ -269,7 +269,7 @@
             this.channel5_txt.BackColor = System.Drawing.SystemColors.ControlLight;
             this.channel5_txt.Location = new System.Drawing.Point(97, 226);
             this.channel5_txt.Name = "channel5_txt";
-            this.channel5_txt.Size = new System.Drawing.Size(340, 23);
+            this.channel5_txt.Size = new System.Drawing.Size(339, 23);
             this.channel5_txt.TabIndex = 13;
             // 
             // channel4_txt
@@ -278,7 +278,7 @@
             this.channel4_txt.BackColor = System.Drawing.SystemColors.ControlLight;
             this.channel4_txt.Location = new System.Drawing.Point(97, 173);
             this.channel4_txt.Name = "channel4_txt";
-            this.channel4_txt.Size = new System.Drawing.Size(340, 23);
+            this.channel4_txt.Size = new System.Drawing.Size(339, 23);
             this.channel4_txt.TabIndex = 10;
             // 
             // channel3_txt
@@ -287,7 +287,7 @@
             this.channel3_txt.BackColor = System.Drawing.SystemColors.ControlLight;
             this.channel3_txt.Location = new System.Drawing.Point(97, 119);
             this.channel3_txt.Name = "channel3_txt";
-            this.channel3_txt.Size = new System.Drawing.Size(340, 23);
+            this.channel3_txt.Size = new System.Drawing.Size(339, 23);
             this.channel3_txt.TabIndex = 7;
             // 
             // channel2_txt
@@ -296,7 +296,7 @@
             this.channel2_txt.BackColor = System.Drawing.SystemColors.ControlLight;
             this.channel2_txt.Location = new System.Drawing.Point(97, 66);
             this.channel2_txt.Name = "channel2_txt";
-            this.channel2_txt.Size = new System.Drawing.Size(340, 23);
+            this.channel2_txt.Size = new System.Drawing.Size(339, 23);
             this.channel2_txt.TabIndex = 4;
             // 
             // channel1_txt
@@ -305,7 +305,7 @@
             this.channel1_txt.BackColor = System.Drawing.SystemColors.ControlLight;
             this.channel1_txt.Location = new System.Drawing.Point(97, 14);
             this.channel1_txt.Name = "channel1_txt";
-            this.channel1_txt.Size = new System.Drawing.Size(340, 23);
+            this.channel1_txt.Size = new System.Drawing.Size(339, 23);
             this.channel1_txt.TabIndex = 1;
             // 
             // channel2_chk
@@ -401,6 +401,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(685, 35);
             this.tableLayoutPanel3.TabIndex = 14;
+            this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
             // 
             // label2
             // 
@@ -468,7 +469,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.85761F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.8658F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.31783F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 127F));
             this.tableLayoutPanel1.Controls.Add(this.pictureBox9, 3, 8);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox8, 3, 7);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox7, 3, 6);
@@ -572,10 +573,10 @@
             // btn_browser1
             // 
             this.btn_browser1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_browser1.Location = new System.Drawing.Point(450, 10);
+            this.btn_browser1.Location = new System.Drawing.Point(449, 10);
             this.btn_browser1.Margin = new System.Windows.Forms.Padding(10);
             this.btn_browser1.Name = "btn_browser1";
-            this.btn_browser1.Size = new System.Drawing.Size(99, 30);
+            this.btn_browser1.Size = new System.Drawing.Size(98, 30);
             this.btn_browser1.TabIndex = 0;
             this.btn_browser1.Text = "Browse";
             this.btn_browser1.UseVisualStyleBackColor = false;
@@ -585,7 +586,7 @@
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(151, 592);
+            this.button2.Location = new System.Drawing.Point(151, 593);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(388, 47);
             this.button2.TabIndex = 4;
@@ -1020,7 +1021,7 @@
             this.pictureBox9.BackgroundImage = global::ImageScroller.Properties.Resources.Check_mark2;
             this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox9.ErrorImage = null;
-            this.pictureBox9.Location = new System.Drawing.Point(569, 426);
+            this.pictureBox9.Location = new System.Drawing.Point(567, 426);
             this.pictureBox9.Margin = new System.Windows.Forms.Padding(10);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(51, 30);
@@ -1032,7 +1033,7 @@
             this.pictureBox8.BackgroundImage = global::ImageScroller.Properties.Resources.Check_mark2;
             this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox8.ErrorImage = null;
-            this.pictureBox8.Location = new System.Drawing.Point(569, 376);
+            this.pictureBox8.Location = new System.Drawing.Point(567, 376);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(10);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(51, 30);
@@ -1044,7 +1045,7 @@
             this.pictureBox7.BackgroundImage = global::ImageScroller.Properties.Resources.Check_mark2;
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox7.ErrorImage = null;
-            this.pictureBox7.Location = new System.Drawing.Point(569, 324);
+            this.pictureBox7.Location = new System.Drawing.Point(567, 324);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(10);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(51, 30);
@@ -1056,7 +1057,7 @@
             this.pictureBox6.BackgroundImage = global::ImageScroller.Properties.Resources.Check_mark2;
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox6.ErrorImage = null;
-            this.pictureBox6.Location = new System.Drawing.Point(569, 274);
+            this.pictureBox6.Location = new System.Drawing.Point(567, 274);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(10);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(51, 30);
@@ -1068,7 +1069,7 @@
             this.pictureBox5.BackgroundImage = global::ImageScroller.Properties.Resources.Check_mark2;
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox5.ErrorImage = null;
-            this.pictureBox5.Location = new System.Drawing.Point(569, 222);
+            this.pictureBox5.Location = new System.Drawing.Point(567, 222);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(10);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(51, 32);
@@ -1080,7 +1081,7 @@
             this.pictureBox4.BackgroundImage = global::ImageScroller.Properties.Resources.Check_mark2;
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox4.ErrorImage = null;
-            this.pictureBox4.Location = new System.Drawing.Point(569, 168);
+            this.pictureBox4.Location = new System.Drawing.Point(567, 168);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(10);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(51, 32);
@@ -1092,7 +1093,7 @@
             this.pictureBox3.BackgroundImage = global::ImageScroller.Properties.Resources.Check_mark2;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox3.ErrorImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(569, 114);
+            this.pictureBox3.Location = new System.Drawing.Point(567, 114);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(10);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(51, 32);
@@ -1104,7 +1105,7 @@
             this.pictureBox2.BackgroundImage = global::ImageScroller.Properties.Resources.Check_mark2;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.ErrorImage = null;
-            this.pictureBox2.Location = new System.Drawing.Point(569, 62);
+            this.pictureBox2.Location = new System.Drawing.Point(567, 62);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(10);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(51, 32);
@@ -1116,7 +1117,7 @@
             this.pictureBox1.BackgroundImage = global::ImageScroller.Properties.Resources.Check_mark2;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(569, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(567, 10);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(10);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(51, 32);

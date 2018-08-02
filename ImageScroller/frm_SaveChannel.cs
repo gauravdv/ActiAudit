@@ -263,6 +263,7 @@ namespace ImageScroller
         private void Insert_NewProject()
         {
             // Check Project Name Exist or not
+            int Scroll_Index = 0;
             cp_Name = txt_Newproject.Text;
             db_connection();
             MySqlCommand cmd = new MySqlCommand();
@@ -281,10 +282,11 @@ namespace ImageScroller
                     // Insert Into db Project_detail
                     db_connection();
                     //MySqlCommand cmd = new MySqlCommand();
-                    cmd.CommandText = "INSERT INTO project_detail(Project_name,computer_IP,Project_Type) values(@Project_name,@computer_IP,@Project_Type)";
+                    cmd.CommandText = "INSERT INTO project_detail(Project_name,computer_IP,Project_Type, Scroll_Index) values(@Project_name,@computer_IP,@Project_Type, @Scroll_Index)";
                     cmd.Parameters.AddWithValue("@Project_name", cp_Name);
                     cmd.Parameters.AddWithValue("@computer_IP", myIP);
                     cmd.Parameters.AddWithValue("@Project_Type", cmb_TagMaster.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@Scroll_Index", Scroll_Index);
                     cmd.Connection = connect;
                     MySqlDataReader ChannelReder = cmd.ExecuteReader();
                     connect.Close();
@@ -604,6 +606,7 @@ namespace ImageScroller
                 MessageBox.Show("Please Select Video");
             }
         }
+        
 
         #region List View
         // Project Name In list View
@@ -870,7 +873,8 @@ namespace ImageScroller
 
         private void btn_ConVideo_Click(object sender, EventArgs e)
         {
-            Convert_VideoToVideo();
+            // Convert_VideoToVideo();
+            //Convert_VideoToVideo_FFmpeg();
         }
 
         // For The btn_VideoName
@@ -1182,7 +1186,11 @@ namespace ImageScroller
                 MessageBox.Show("Select Any Project ....");
             }
         }
-       
+
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 }
