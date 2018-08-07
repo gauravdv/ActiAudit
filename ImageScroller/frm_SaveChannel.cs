@@ -11,12 +11,18 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Threading;
 
 namespace ImageScroller
 {
     public partial class frm_SaveChannel : Form
     {
-        
+       
+        Bitmap LoadImg = Properties.Resources.btn_Load; // Set PlayBlue Image
+        Bitmap CheckImg = Properties.Resources.btn_Check; // Set PlayBlue Image
+        Bitmap LoadSImg = Properties.Resources.btn_LoadS; // Set PlayBlue Image
+        Bitmap LoadBigImg = Properties.Resources.btn_LoadBig; // Set PlayBlue Image
+
         string db_Server;
         string db_Name;
         string db_UserID;
@@ -58,10 +64,11 @@ namespace ImageScroller
         {
             InitializeComponent();
             initChannelDisplayForm();
-            Get_ipAddress();           
+            Get_ipAddress();
+
         }
 
-       
+
         #region Data Base
         // DataBase Connection
         private void db_connection()
@@ -82,7 +89,7 @@ namespace ImageScroller
                 MessageBox.Show("Can not open mysql connection !" + ex.Message);
             }
         }
-        
+
         // Get TextFile For Data Base
         private void Get_DataBaseDetail()
         {
@@ -102,10 +109,10 @@ namespace ImageScroller
                             string[] txtsplit = ss.Split(';');
 
                             //now loop through   array
-                             db_Server = txtsplit[0];
-                             db_Name = txtsplit[1];
-                             db_UserID = txtsplit[2];// user id
-                             db_Password = txtsplit[3]; // password
+                            db_Server = txtsplit[0];
+                            db_Name = txtsplit[1];
+                            db_UserID = txtsplit[2];// user id
+                            db_Password = txtsplit[3]; // password
                         }
                     }
                 }
@@ -115,13 +122,13 @@ namespace ImageScroller
                 Console.WriteLine("Error: {0}", e.ToString());
             }
         }
-        
+
         // Get ProjectID Name to Db
         private void Get_dbProjectID(out string db_ProjectID, ref string db_ProjectName)
         {
             db_connection();
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = "SELECT Project_ID,Project_Type FROM project_detail WHERE Project_name = '" + lab_SelectProjectName.Text + "' AND computer_IP = '" + myIP +"' ";
+            cmd.CommandText = "SELECT Project_ID,Project_Type FROM project_detail WHERE Project_name = '" + lab_SelectProjectName.Text + "' AND computer_IP = '" + myIP + "' ";
             cmd.Connection = connect;
             MySqlDataReader cChannelReder = cmd.ExecuteReader();
             while (cChannelReder.Read())
@@ -347,20 +354,60 @@ namespace ImageScroller
             connect.Close();
         }
 
+        private void Get_CheckPictureBoxLoad(int i)
+        {
+            PictureBox[] pictureBoxArry = new PictureBox[9];
+            String[] PBCheckName = new string[9];
+            // Check Picture bOx Array
+            pictureBoxArry[0] = PB_Check1;
+            pictureBoxArry[1] = PB_Check2;
+            pictureBoxArry[2] = PB_Check3;
+            pictureBoxArry[3] = PB_Check4;
+            pictureBoxArry[4] = PB_Check5;
+            pictureBoxArry[5] = PB_Check6;
+            pictureBoxArry[6] = PB_Check7;
+            pictureBoxArry[7] = PB_Check8;
+            pictureBoxArry[8] = PB_Check9;
+
+            pictureBoxArry[i].BackColor = Color.Transparent;
+            pictureBoxArry[i].Visible = true;
+            pictureBoxArry[i].Image = LoadSImg;
+            this.Cursor = Cursors.WaitCursor;
+        }
+        private void Get_CheckPictureBoxCheck(int i)
+        {
+            PictureBox[] pictureBoxArry = new PictureBox[9];
+            String[] PBCheckName = new string[9];
+            // Check Picture bOx Array
+            pictureBoxArry[0] = PB_Check1;
+            pictureBoxArry[1] = PB_Check2;
+            pictureBoxArry[2] = PB_Check3;
+            pictureBoxArry[3] = PB_Check4;
+            pictureBoxArry[4] = PB_Check5;
+            pictureBoxArry[5] = PB_Check6;
+            pictureBoxArry[6] = PB_Check7;
+            pictureBoxArry[7] = PB_Check8;
+            pictureBoxArry[8] = PB_Check9;
+
+            pictureBoxArry[i].BackColor = Color.Transparent;
+            pictureBoxArry[i].Visible = true;
+            pictureBoxArry[i].Image = CheckImg;
+            this.Cursor = Cursors.WaitCursor;
+        }
 
         private void Get_CheckPictureBox(int i)
         {
             PictureBox[] pictureBoxArry = new PictureBox[9];
             // Picture bOx Array
-            pictureBoxArry[0] = pictureBox1;
-            pictureBoxArry[1] = pictureBox2;
-            pictureBoxArry[2] = pictureBox3;
-            pictureBoxArry[3] = pictureBox4;
-            pictureBoxArry[4] = pictureBox5;
-            pictureBoxArry[5] = pictureBox6;
-            pictureBoxArry[6] = pictureBox7;
-            pictureBoxArry[7] = pictureBox8;
-            pictureBoxArry[8] = pictureBox9;
+            pictureBoxArry[0] = PB_Check1;
+            pictureBoxArry[1] = PB_Check2;
+            pictureBoxArry[2] = PB_Check3;
+            pictureBoxArry[3] = PB_Check4;
+            pictureBoxArry[4] = PB_Check5;
+            pictureBoxArry[5] = PB_Check6;
+            pictureBoxArry[6] = PB_Check7;
+            pictureBoxArry[7] = PB_Check8;
+            pictureBoxArry[8] = PB_Check9;
 
             //string ExeLoaction = System.Reflection.Assembly.GetEntryAssembly().Location; ;
             //string txtFilePath = Path.GetDirectoryName(ExeLoaction); // Folder path
@@ -368,13 +415,17 @@ namespace ImageScroller
             //pictureBoxArry[i].SizeMode = PictureBoxSizeMode.StretchImage;
             //pictureBoxArry[i].ImageLocation = @"C:\\Users\\konsultera\\Desktop\\SGDT\\Check.jpg"; 
             pictureBoxArry[i].Show();
-            pictureBoxArry[i].SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxArry[i].SizeMode = PictureBoxSizeMode.CenterImage;
             //pictureBoxArry[i].ImageLocation = @txtpath;
+
+            //pictureBoxArry[i].BackColor = Color.Transparent;
+            // pictureBoxArry[i].Visible = true;
         }
 
         // Save Channel, VideoPath, SnapshortPath
         private void Save_Channel_Path()
         {
+           
             CheckBox[] CheckBoxArray = new CheckBox[9];
             TextBox[] TextBoxArry = new TextBox[9];
             string[] ChannelNameArray = new string[9];
@@ -415,6 +466,15 @@ namespace ImageScroller
                 // Insert Channel To db
                 if (CheckBoxArray[i].Checked == true && TextBoxArry[i].Text != "")
                 {
+                    ProgressDialog frm = new ProgressDialog();
+                    Thread.Sleep(2000);
+                    frm.Show();
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        Get_CheckPictureBoxLoad(i);
+                        //Get_CheckPictureBox(i);
+                    });
+
                     string _ChannelName = ChannelNameArray[i];
                     string db_ChannelName;
                     string db_ProjectID;
@@ -426,15 +486,15 @@ namespace ImageScroller
                     string vfolder_path = Path.GetDirectoryName(TextBoxArry[i].Text); // Folder path
                     string FileName = Path.GetFileName(TextBoxArry[i].Text); // get File name
                     string VideoFileName = System.IO.Path.GetFileNameWithoutExtension(FileName);
-                    
+
                     string cSnapshotFolder_path = vfolder_path + "\\" + cp_ID + "\\" + "System_SnapShot" + "\\" + VideoFileName; // create folder path    
                     string cSnapshotFolder_path_2 = vfolder_path + "\\" + cp_ID + "-" + cp_Name + "\\" + "System_SnapShot" + "\\" + VideoFileName; // create folder path   
                     //string cSnapshotFolder_path = vfolder_path + "\\" + cp_ID + "_" + _ProjectName + "\\" + "System_SnapShot" + "\\" + VideoFileName; // create folder path                
                     System.IO.Directory.CreateDirectory(cSnapshotFolder_path_2); // create folder
 
                     string tempFilename = Path.ChangeExtension(Path.GetTempFileName(), ".bat"); // create bat file
-                    string vp_Path = TextBoxArry[i].Text;                  
-                    string Vp_path_2 = "\""+ vp_Path + "\"";
+                    string vp_Path = TextBoxArry[i].Text;
+                    string Vp_path_2 = "\"" + vp_Path + "\"";
 
                     Get_ChannelNo(out db_ChannelName, out db_ProjectID, ref _ChannelName);
                     if (_ChannelName == db_ChannelName)
@@ -450,8 +510,8 @@ namespace ImageScroller
                         cmd.Parameters.AddWithValue("@Project_ID", cp_ID);
                         cmd.Parameters.AddWithValue("@img_Format", cp_imgFormat);
                         cmd.Parameters.AddWithValue("@file_Type", cp_fileType);
-                        cmd.Parameters.AddWithValue("@file_VideoName", FileName);                      
-                        
+                        cmd.Parameters.AddWithValue("@file_VideoName", FileName);
+
                         cmd.Connection = connect;
                         MySqlDataReader Channel = cmd.ExecuteReader();
                         connect.Close();
@@ -494,16 +554,34 @@ namespace ImageScroller
                         //writer.WriteLine("cd ffmpeg\bin");
                         //writer.WriteLine("ffmpeg.exe");
                         writer.WriteLine("ffmpeg -y -i " + Vp_path_2 + " -vf fps=1 " + op_path_2 + "");
-                       // writer.WriteLine("PAUSE");                      
+                        // writer.WriteLine("PAUSE");                      
                     }
-                    Process process = Process.Start(batfilepath);
-                    process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                    process.WaitForExit();
-                    //MessageBox.Show("Convert" + " " + Channel_name + " " + "Video into Images");
-                    File.Delete(batfilepath); // delete bat file  
+                    //Process process = Process.Start(batfilepath);
+                    //process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    //process.WaitForExit();
+                    ////MessageBox.Show("Convert" + " " + Channel_name + " " + "Video into Images");
+                    //File.Delete(batfilepath); // delete bat file  
 
-                    Get_CheckPictureBox(i);
+                    var startInfo = new ProcessStartInfo();
+                    startInfo.WorkingDirectory = cSnapshotFolder_path_2;
+                    startInfo.FileName = batfilename;
+                    startInfo.CreateNoWindow = true;
+                    startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    Process process = Process.Start(startInfo);
+                    //PB_VideoMerge.Image = LoadSImg;
+                    //process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    process.WaitForExit();
+                    File.Delete(batfilepath);
+                    //PB_VideoMerge.Image = CheckImg;
+                    listView_VideoFile.Items.Clear();
+                    frm.Close();
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        Get_CheckPictureBoxCheck(i);
+                    });
                 }
+                this.Cursor = Cursors.Default;
+               
             }
         }
 
@@ -544,69 +622,105 @@ namespace ImageScroller
         }
 
         // ffmpeg Convert Video To Video
-        private void Convert_VideoToVideo()
+        private void Convert_VideoToVideo_FFmpeg()
         {
-            int lvCount = listView_VideoFile.Items.Count;
-            if (lvCount != 0)
+            ProgressDialog frm = new ProgressDialog();
+            this.Invoke((MethodInvoker)delegate
             {
-                string path_lvIteam = listView_VideoFile.Items[i].Text; // Get ListView Iteams
-
-                string batfilename = "temp.bat";
-                string vfolder_path = Path.GetDirectoryName(path_lvIteam); // Folder path
-                string FileName = Path.GetFileName(path_lvIteam); // get File name
-                string VideoFileName = System.IO.Path.GetFileNameWithoutExtension(FileName);
-                string path_SaveVideo = vfolder_path + "\\" + "Output_Video";
-                System.IO.Directory.CreateDirectory(path_SaveVideo); // create folder               
-
-                string batfilepath = vfolder_path + "\\" + batfilename;
-                string textfilepath = vfolder_path + "\\" + "mylist.txt";
-                string textfilepath_2 = "\"" + vfolder_path + "\\" + "mylist.txt" + "\"";
-                // Create Text File
-                string[] selected_item = new string[listView_VideoFile.Items.Count];
-                for (int i = 0; i < listView_VideoFile.Items.Count; i++)
+                //SetLoading(true);
+                //Thread.Sleep(2000);
+                frm.Show();
+                int lvCount = listView_VideoFile.Items.Count;
+                if (lvCount == 0 || lvCount == 1)
                 {
-                    string VideoName = listView_VideoFile.Items[i].Text;
-                    string FileVideoName = System.IO.Path.GetFileName(VideoName);
-                    //string FileVideoName2 = "file " + FileVideoName;
-                    selected_item[i] = "file " + FileVideoName;
-                    //string FileExtension = System.IO.Path.GetExtension(VideoName);
+                    MessageBox.Show("Please Select Video");
                 }
-                System.IO.File.WriteAllLines(textfilepath, selected_item);
-
-                string op_FileExtension = System.IO.Path.GetExtension(selected_item[0]);
-                string op_path_Video = path_SaveVideo + "\\" + "output" + op_FileExtension;
-                string op_path_Video_2 = "\"" + path_SaveVideo + "\\" + "output" + op_FileExtension + "\"";
-
-                // Create a bat File
-                using (StreamWriter writer = new StreamWriter(batfilepath))
-                {                   
-                    writer.WriteLine("ffmpeg -y -f concat -i " + textfilepath_2 + " -c:v copy -an " + op_path_Video_2);
-                    writer.WriteLine("PAUSE");
-                }
-                try
+                else
                 {
-                    var startInfo = new ProcessStartInfo();
-                    startInfo.WorkingDirectory = vfolder_path;
-                    startInfo.FileName = batfilename;
-                    startInfo.CreateNoWindow = true;
-                    Process process = Process.Start(startInfo);
-                    process.WaitForExit();
-                    File.Delete(batfilepath);
-                    File.Delete(textfilepath);
-                    listView_VideoFile.Items.Clear();
-                    System.Diagnostics.Process.Start(path_SaveVideo);
+                    string path_lvIteam = listView_VideoFile.Items[i].Text; // Get ListView Iteams
+                    string batfilename = "temp.bat";
+                    string vfolder_path = Path.GetDirectoryName(path_lvIteam); // Folder path
+                    string FileName = Path.GetFileName(path_lvIteam); // get File name
+                    string VideoFileName = System.IO.Path.GetFileNameWithoutExtension(FileName);
+                    string path_SaveVideo = vfolder_path + "\\" + "Output_Video";
+                    System.IO.Directory.CreateDirectory(path_SaveVideo); // create folder               
+
+                    string batfilepath = vfolder_path + "\\" + batfilename;
+                    string textfilepath = vfolder_path + "\\" + "mylist.txt";
+                    string textfilepath_2 = "\"" + vfolder_path + "\\" + "mylist.txt" + "\"";
+                    // Create Text File
+                    string[] selected_item = new string[listView_VideoFile.Items.Count];
+                    for (int i = 0; i < listView_VideoFile.Items.Count; i++)
+                    {
+                        string VideoName = listView_VideoFile.Items[i].Text;
+                        string FileVideoName = System.IO.Path.GetFileName(VideoName);
+                        //string FileVideoName2 = "file " + FileVideoName;
+                        selected_item[i] = "file " + FileVideoName;
+                        //string FileExtension = System.IO.Path.GetExtension(VideoName);
+                    }
+                    System.IO.File.WriteAllLines(textfilepath, selected_item);
+
+                    string op_FileExtension = System.IO.Path.GetExtension(selected_item[0]);
+                    string op_path_Video = path_SaveVideo + "\\" + "output" + op_FileExtension;
+                    string op_path_Video_2 = "\"" + path_SaveVideo + "\\" + "output" + op_FileExtension + "\"";
+
+                    // Create a bat File
+                    using (StreamWriter writer = new StreamWriter(batfilepath))
+                    {
+                        writer.WriteLine("ffmpeg -y -f concat -i " + textfilepath_2 + " -c:v copy -an " + op_path_Video_2);
+                        //writer.WriteLine("PAUSE");
+                    }
+                    try
+                    {
+                       
+                        //// FFmpeg Direct Run   ------------------ 
+                        var startInfo = new ProcessStartInfo();
+                        startInfo.WorkingDirectory = vfolder_path;
+                        startInfo.FileName = batfilename;
+                        startInfo.CreateNoWindow = true;
+                        startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                        Process process = Process.Start(startInfo);
+                        PB_VideoMerge.Image = LoadSImg;
+                        process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                        //for (int i = 0; ; i++)
+                        //{
+                        //    if (!process.HasExited)
+                        //    {
+                        //        //SetLoading(true);
+                        //        //Thread.Sleep(2000);
+                        //        process.Refresh();
+                        //        frm.Show();
+                        //        // Print working set to console.
+                        //        //Console.WriteLine("Physical Memory Usage: " + process.WorkingSet.ToString());
+                        //        //// Wait 2 seconds.                          
+                        //    }
+                        //    else
+                        //    {
+                        //        frm.Close();
+                        //        //SetLoading(false);
+                        //        break;
+                        //    }
+                        //}
+                        process.WaitForExit();
+                        File.Delete(batfilepath);
+                        File.Delete(textfilepath);
+                        //PB_VideoMerge.Image = CheckImg;
+                        listView_VideoFile.Items.Clear();
+                        System.Diagnostics.Process.Start(vfolder_path + "\\Output_Video\\"); //open a video path
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        //if (process != null) process.Dispose();
+                    }
                 }
-                catch
-                {
-                    //if (process != null) process.Dispose();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please Select Video");
-            }
+                frm.Close();
+                //SetLoading(false);
+            });
+
+                                  
         }
-        
+
 
         #region List View
         // Project Name In list View
@@ -660,7 +774,7 @@ namespace ImageScroller
 
         private void listView_VideoFile_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
         #endregion-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -729,18 +843,18 @@ namespace ImageScroller
         {
             PictureBox[] pictureBoxArry = new PictureBox[9];
             // Picture bOx Array
-            pictureBoxArry[0] = pictureBox1;
-            pictureBoxArry[1] = pictureBox2;
-            pictureBoxArry[2] = pictureBox3;
-            pictureBoxArry[3] = pictureBox4;
-            pictureBoxArry[4] = pictureBox5;
-            pictureBoxArry[5] = pictureBox6;
-            pictureBoxArry[6] = pictureBox7;
-            pictureBoxArry[7] = pictureBox8;
-            pictureBoxArry[8] = pictureBox9;
+            pictureBoxArry[0] = PB_Check1;
+            pictureBoxArry[1] = PB_Check2;
+            pictureBoxArry[2] = PB_Check3;
+            pictureBoxArry[3] = PB_Check4;
+            pictureBoxArry[4] = PB_Check5;
+            pictureBoxArry[5] = PB_Check6;
+            pictureBoxArry[6] = PB_Check7;
+            pictureBoxArry[7] = PB_Check8;
+            pictureBoxArry[8] = PB_Check9;
             for (int i = 0; i < 9; i++)
             {
-                pictureBoxArry[i].Hide();
+                pictureBoxArry[i].Visible = false;
             }
         }
 
@@ -781,6 +895,7 @@ namespace ImageScroller
             Add_ListProjectName();
             Get_CmbTagType();
             //button1.Hide();
+            PB_VideoMerge.Visible = false;
         }
 
         // btn Add New Project
@@ -812,9 +927,9 @@ namespace ImageScroller
         // Delete Project 
         private void listView_ProjectName_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            
+
         }
-       
+
         // Text search
         private void txt_Newproject_TextChanged(object sender, EventArgs e)
         {
@@ -847,17 +962,33 @@ namespace ImageScroller
         {
             if (lab_SelectProjectName.Text != "")
             {
+                try
+                {
+                    Thread threadInput = new Thread(Click_StartAuditing);
+                    threadInput.Start();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Please Select Any Project");
+            }
+        }
+        private void Click_StartAuditing()
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
                 Save_Channel_Path();
                 c_proName = lab_SelectProjectName.Text;
                 c_proType = lab_ProjectType.Text;
                 ImageScrollerForm ISF = new ImageScrollerForm();
                 ISF.Show();
                 Unload_Form();
-            }
-            else
-            {
-                MessageBox.Show("Please Select Any Project");
-            }
+            });
         }
 
         // For Combo Box
@@ -873,8 +1004,46 @@ namespace ImageScroller
 
         private void btn_ConVideo_Click(object sender, EventArgs e)
         {
-            Convert_VideoToVideo();
-            //Convert_VideoToVideo_FFmpeg();
+            //Thread tid1 = new Thread(new ThreadStart(SetLoad));
+            //Thread tid2 = new Thread(new ThreadStart(Convert_VideoToVideo_FFmpeg));
+            //tid1.Start();
+            //tid2.Start();
+            //MessageBox.Show("Done");
+            try
+            {
+                Thread threadInput = new Thread(Convert_VideoToVideo_FFmpeg);
+                threadInput.Start();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            //Convert_VideoToVideo();          
+        }
+
+        // Loading Picture Box      
+        private void SetLoading(bool displayLoader)
+        {
+            if (displayLoader)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    PB_VideoMerge.BackColor = Color.Transparent;
+                    PB_VideoMerge.Visible = true;
+                    this.Cursor = Cursors.WaitCursor;
+                    //Size size = new Size(200, 150);
+                    //PB_VideoMerge.Size = size;                              
+                });
+            }
+            else
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    PB_VideoMerge.Visible = false;
+                    this.Cursor = Cursors.Default;
+                });
+            }
         }
 
         // For The btn_VideoName
@@ -883,14 +1052,14 @@ namespace ImageScroller
             Add_ListVideoName();
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Multiselect = true;
-            DialogResult dr = ofd.ShowDialog();           
+            DialogResult dr = ofd.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
-            {               
+            {
                 foreach (String file in ofd.FileNames)
-                {                                       
-                        vfile_path = file; // file path               
-                        ListViewItem lv = new ListViewItem(vfile_path);
-                        listView_VideoFile.Items.Add(lv);
+                {
+                    vfile_path = file; // file path               
+                    ListViewItem lv = new ListViewItem(vfile_path);
+                    listView_VideoFile.Items.Add(lv);
                 }
             }
             //OpenFileDialog ofd = new OpenFileDialog();
@@ -1001,93 +1170,6 @@ namespace ImageScroller
             //}
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {           
-            //// If Exists Then Delete
-            //if (File.Exists("sample.mp3"))
-            //    try
-            //    {
-            //        File.Delete("sample.mp3");
-            //    }
-            //    catch
-            //    {
-            //        return;
-            //    }
-
-            //string strCmdText;
-            //strCmdText = @"/C ffmpeg.exe -i C:\\Gaurav\\ImageScroller\\Doc\\Video_images\\output.mp4 -vf fps=1 C:\\Gaurav\\ImageScroller\\Doc\\Video_images\\image2/%%d.jpg"; /// this is just argument example 
-            ////strCmdText = @"/C ffmpeg.exe - framerate 1 - f image2 - i C:\Gaurav\ImageScroller\Doc\Video_images\image2 /%% d.jpg - c:v libx264 -vf fps = 25 - pix_fmt yuv420p video.mp4";
-            //var proc = System.Diagnostics.Process.Start("CMD.exe", strCmdText);
-            //string s = proc.StandardOutput.ReadToEnd();
-            //textBox1.Text = s;
-
-            //Process process = new System.Diagnostics.Process();
-            //process.StartInfo.FileName = Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) +
-            //            @"C:\ffmpeg\bin\ffmpeg.exe"; // Change the directory where ffmpeg.exe is.  
-            //process.EnableRaisingEvents = false;
-            ////process.StartInfo.WorkingDirectory = @"D:\ffmpegx86"; // The output directory  
-            //process.StartInfo.Arguments = "-i output.mp4 -vf fps=1 image2 /%% d.jpg";           
-            //process.StartInfo.UseShellExecute = true;
-            //process.StartInfo.CreateNoWindow = true;
-            //process.Start();
-            //StreamReader reader = process.StandardOutput;
-            //string output = reader.ReadToEnd();
-            //Console.WriteLine(output);
-            //process.WaitForExit();
-            //Close();
-
-            // Text bo0x array        
-            //TextBox[] TextBoxArry = new TextBox[9];
-            //TextBoxArry[0] = channel1_txt;
-            //TextBoxArry[1] = channel2_txt;
-            //TextBoxArry[2] = channel3_txt;
-            //TextBoxArry[3] = channel4_txt;
-            //TextBoxArry[4] = channel5_txt;
-            //TextBoxArry[5] = channel6_txt;
-            //TextBoxArry[6] = channel7_txt;
-            //TextBoxArry[7] = channel8_txt;
-            //TextBoxArry[8] = channel9_txt;
-
-
-            //for (int i = 0; i < 9; i++)
-            //{
-            //    if (TextBoxArry[i].Text != "")
-            //    {
-            //        string vfolder_path = Path.GetDirectoryName(TextBoxArry[i].Text); // Folder path
-            //        string FileName = Path.GetFileName(TextBoxArry[i].Text); // get File name
-            //        string cSnapshot_path = System.IO.Path.GetFileNameWithoutExtension(FileName);
-            //        string cSnapshotFolder_path = vfolder_path + "\\" + cSnapshot_path; // create folder path                
-
-            //        System.IO.Directory.CreateDirectory(cSnapshotFolder_path); // create folder
-
-            //        string tempFilename = Path.ChangeExtension(Path.GetTempFileName(), ".bat"); // create bat file
-            //        string vp_Path = TextBoxArry[i].Text;
-            //        string op_path = cSnapshotFolder_path + "/%%d.jpg";
-            //        //string vp_Path = "C:\\Gaurav\\ImageScroller\\Doc\\Video_images\\output.mp4";
-            //        //string op_path = "C:\\Gaurav\\ImageScroller\\Doc\\Video_images\\image2/%%d.jpg";
-            //        using (StreamWriter writer = new StreamWriter(tempFilename))
-            //        {
-            //            writer.WriteLine("hide");
-            //            writer.WriteLine("cd..");
-            //            writer.WriteLine("cd..");
-            //            //writer.WriteLine("cd ffmpeg\bin");
-            //            //writer.WriteLine("ffmpeg.exe");
-            //            writer.WriteLine("ffmpeg -i " + vp_Path + " -vf fps=1 " + op_path + "");
-            //            //writer.WriteLine("PAUSE");                      
-            //        }
-            //        Process process = Process.Start(tempFilename);
-            //        process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            //        process.WaitForExit();
-            //        MessageBox.Show("MP4 TO jpg");
-            //        File.Delete(tempFilename);
-            //    }
-            //}
-
-        }
-
-
-
-
         #endregion-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
         private void listView_ProjectName_MouseClick(object sender, MouseEventArgs e)
@@ -1121,7 +1203,7 @@ namespace ImageScroller
                     }
                 }
             }
-                
+
         }
 
         // Import Excel All Db data
@@ -1163,7 +1245,7 @@ namespace ImageScroller
                 string FileCSVName = "AuditChannel - " + cp_ID + " - " + cp_Name + ".csv";
                 Save_CSVFile = Path_CSVFile + "\\" + cp_ID + "-" + cp_Name + "\\" + FileCSVName;
                 File.WriteAllText(Save_CSVFile, sb.ToString());
-             
+
                 MessageBox.Show("Export Data Successfully");
                 connect.Close();
 
@@ -1185,13 +1267,11 @@ namespace ImageScroller
             {
                 MessageBox.Show("Select Any Project ....");
             }
-        }
-
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        }     
+      
     }
-
 }
+    
+
+
 

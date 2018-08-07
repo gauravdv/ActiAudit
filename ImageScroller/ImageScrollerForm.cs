@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -905,8 +906,19 @@ namespace ImageScroller
         // Convert Snap To Video 
         private void Set_SnaptoVideo()
         {
+            SetLoading(true);
+            Thread.Sleep(4000);
+            this.Invoke((MethodInvoker)delegate
+            {
+                ABCDE();
+            });           
+        }
+        private void ABCDE()
+        {
+            ProgressDialog frm = new ProgressDialog();
             try
             {
+                frm.Show();
                 db_connection();
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.CommandText = "SELECT Path_ChannelTag,Channel_Name,tag_reason,path_SysVideo FROM project_tag WHERE Project_ID = @Project_ID";
@@ -972,6 +984,7 @@ namespace ImageScroller
                             startInfo.WorkingDirectory = ABC;
                             startInfo.FileName = batfilename;
                             startInfo.CreateNoWindow = true;
+                            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
                             Process process = Process.Start(startInfo);
                             process.WaitForExit();
                             File.Delete(batfilepath);
@@ -983,13 +996,17 @@ namespace ImageScroller
                     }
 
                     System.Diagnostics.Process.Start(OpenPath_VideoFile); //open a video path
+                    PB_ImgVideo.Visible = false;
+                    this.Cursor = Cursors.Default;
+                    frm.Close();
                     MessageBox.Show("Auditing Completed");
                     this.Close();
+
                 }
                 else
                 {
                     MessageBox.Show("No snapshot Taken Yet ......." + " Take SnapShot First");
-                }
+                }                
             }
             catch (Exception ex)
             {
@@ -999,59 +1016,67 @@ namespace ImageScroller
 
         // Import Excel All Db data
         private void Create_Excel()
-        {   
-            DataTable dataTable = new DataTable { TableName = "MyTableName" };
-            try
-            {                            
-                db_connection();
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.CommandText = "SELECT PT.Project_id AS Project_ID, PD.Project_name AS Project_Name, PD.date_time AS Project_Create_DateTime, " +
-                                    "PT.tag_type As Project_Type, PT.tag_reason AS SnapShot_Reason, " +
-                                    "PT.tag_image AS SnapShot_Images, PT.Channel_Name AS Channel_Name, " +
-                                    "PT.Path_VideoTag AS Create_Video_Path, PT.Path_SysVideo AS Project_Path, PT.date_time AS SnapShot_Crate_DateTime" +" "+
-                                    "FROM project_tag PT INNER JOIN project_detail PD ON PT.Project_id = PD.Project_ID " +
-                                    "WHERE PT.Project_id = '" + cp_ID + "'";
-                cmd.Connection = connect;               
-
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                da.Fill(dataTable);                              
-            
-                BindingSource bSource = new BindingSource();
-                bSource.DataSource = dataTable;
-
-                StringBuilder sb = new StringBuilder();
-
-                IEnumerable<string> columnNames = dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName);
-                sb.AppendLine(string.Join(",", columnNames));
-
-                foreach (DataRow row in dataTable.Rows)
+        {
+            SetLoading(true);
+            Thread.Sleep(4000);
+            this.Invoke((MethodInvoker)delegate
+            {               
+                DataTable dataTable = new DataTable { TableName = "MyTableName" };
+                try
                 {
-                    IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
-                    sb.AppendLine(string.Join(",", fields));
-                }
-                if (dataTable != null && dataTable.Rows.Count > 0)
-                {                   
-                    foreach (DataRow dr in dataTable.Rows)
+                    db_connection();
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.CommandText = "SELECT PT.Project_id AS Project_ID, PD.Project_name AS Project_Name, PD.date_time AS Project_Create_DateTime, " +
+                                        "PT.tag_type As Project_Type, PT.tag_reason AS SnapShot_Reason, " +
+                                        "PT.tag_image AS SnapShot_Images, PT.Channel_Name AS Channel_Name, " +
+                                        "PT.Path_VideoTag AS Create_Video_Path, PT.Path_SysVideo AS Project_Path, PT.date_time AS SnapShot_Crate_DateTime" + " " +
+                                        "FROM project_tag PT INNER JOIN project_detail PD ON PT.Project_id = PD.Project_ID " +
+                                        "WHERE PT.Project_id = '" + cp_ID + "'";
+                    cmd.Connection = connect;
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dataTable);
+
+                    BindingSource bSource = new BindingSource();
+                    bSource.DataSource = dataTable;
+
+                    StringBuilder sb = new StringBuilder();
+
+                    IEnumerable<string> columnNames = dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName);
+                    sb.AppendLine(string.Join(",", columnNames));
+
+                    foreach (DataRow row in dataTable.Rows)
                     {
-                        Path_Project = (dataTable.Rows[0][8]).ToString();  //Path_SysVideo 
-                        string FileCSVName = "AuditComplete - " + cp_ID + " - " + cp_proName + ".csv";
-                        string Save_CSVFile = Path_Project + "\\" + FileCSVName;  // Save CSV file path   
-                        File.WriteAllText(Save_CSVFile, sb.ToString());                        
+                        IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
+                        sb.AppendLine(string.Join(",", fields));
                     }
-
-                    MessageBox.Show("Export Data Successfully");
-                    System.Diagnostics.Process.Start(Path_Project); //open file save path
+                    if (dataTable != null && dataTable.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in dataTable.Rows)
+                        {
+                            Path_Project = (dataTable.Rows[0][8]).ToString();  //Path_SysVideo 
+                            string FileCSVName = "AuditComplete - " + cp_ID + " - " + cp_proName + ".csv";
+                            string Save_CSVFile = Path_Project + "\\" + FileCSVName;  // Save CSV file path   
+                            File.WriteAllText(Save_CSVFile, sb.ToString());
+                        }
+                        SetLoading(false);
+                        MessageBox.Show("Export Data Successfully");
+                        System.Diagnostics.Process.Start(Path_Project); //open file save path
+                    }
+                    else
+                    {
+                        MessageBox.Show("No SnapShort Data Found .....");
+                    }
+                    connect.Close();
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("No SnapShort Data Found .....");
+                    MessageBox.Show(ex.Message);
                 }
-                connect.Close();                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            });
+            
+            SetLoading(false);
+            
         }     
         
 
@@ -1421,14 +1446,36 @@ namespace ImageScroller
         // btn Export CSV
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Create_Excel(); // Create csv file from db
+            pauseScroller();
+            PB_play.Image = PlayBlackImg;
+            try
+            {
+                Thread threadInput = new Thread(Create_Excel); // Create csv file from db
+                threadInput.Start();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         // btn Convert Snap To Video 
         private void btn_SnapTOVideo_Click(object sender, EventArgs e)
         {
-            Save_ScrollIndex(); // Save scroll index in Db 
-            Set_SnaptoVideo();  // ffmpeg Snap to Video        
+            Save_ScrollIndex(); // Save scroll index in Db            
+            pauseScroller();
+            PB_play.Image = PlayBlackImg;
+            try
+            {
+                Thread threadInput = new Thread(Set_SnaptoVideo); // ffmpeg Snap to Video    
+                threadInput.Start();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
        
         //Not Used
@@ -1595,8 +1642,30 @@ namespace ImageScroller
             }
         }
         #endregion
-             
-                
+
+        // Loading Picture Box
+        private void SetLoading(bool displayLoader)
+        {
+            if (displayLoader)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    PB_ImgVideo.BackColor = Color.Transparent;
+                    PB_ImgVideo.Visible = true;
+                    Size size = new Size(170, 140);
+                    PB_ImgVideo.Size = size;
+                    this.Cursor = Cursors.WaitCursor;
+                });
+            }
+            else
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    PB_ImgVideo.Visible = false;
+                    this.Cursor = Cursors.Default;
+                });
+            }
+        }
 
     }
 }

@@ -73,6 +73,46 @@ namespace ImageScroller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btn_Check {
+            get {
+                object obj = ResourceManager.GetObject("btn_Check", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_Load {
+            get {
+                object obj = ResourceManager.GetObject("btn_Load", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_LoadBig {
+            get {
+                object obj = ResourceManager.GetObject("btn_LoadBig", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btn_LoadS {
+            get {
+                object obj = ResourceManager.GetObject("btn_LoadS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Check {
             get {
                 object obj = ResourceManager.GetObject("Check", resourceCulture);
@@ -166,6 +206,16 @@ namespace ImageScroller.Properties {
         internal static System.Drawing.Bitmap playbutton40 {
             get {
                 object obj = ResourceManager.GetObject("playbutton40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Spinner {
+            get {
+                object obj = ResourceManager.GetObject("Spinner", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

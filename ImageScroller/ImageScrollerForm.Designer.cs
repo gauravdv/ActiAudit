@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImageScrollerForm));
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.PB_ImgVideo = new System.Windows.Forms.PictureBox();
+            this.Btn_Reset = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lab_ProjectType = new System.Windows.Forms.Label();
             this.btn_SnapTOVideo = new System.Windows.Forms.Button();
@@ -88,8 +90,8 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.playTimer = new System.Windows.Forms.Timer(this.components);
-            this.Btn_Reset = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_ImgVideo)).BeginInit();
             this.groupBox_Channel.SuspendLayout();
             this.controls_grp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PB_X)).BeginInit();
@@ -122,6 +124,7 @@
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHeader.Controls.Add(this.PB_ImgVideo);
             this.pnlHeader.Controls.Add(this.Btn_Reset);
             this.pnlHeader.Controls.Add(this.button1);
             this.pnlHeader.Controls.Add(this.lab_ProjectType);
@@ -140,6 +143,29 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(177, 600);
             this.pnlHeader.TabIndex = 894;
+            // 
+            // PB_ImgVideo
+            // 
+            this.PB_ImgVideo.BackColor = System.Drawing.Color.Transparent;
+            this.PB_ImgVideo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PB_ImgVideo.Image = global::ImageScroller.Properties.Resources.btn_LoadBig;
+            this.PB_ImgVideo.Location = new System.Drawing.Point(2, 448);
+            this.PB_ImgVideo.Name = "PB_ImgVideo";
+            this.PB_ImgVideo.Size = new System.Drawing.Size(10, 10);
+            this.PB_ImgVideo.TabIndex = 909;
+            this.PB_ImgVideo.TabStop = false;
+            // 
+            // Btn_Reset
+            // 
+            this.Btn_Reset.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Btn_Reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Reset.Location = new System.Drawing.Point(10, 458);
+            this.Btn_Reset.Name = "Btn_Reset";
+            this.Btn_Reset.Size = new System.Drawing.Size(153, 44);
+            this.Btn_Reset.TabIndex = 906;
+            this.Btn_Reset.Text = "Continue Auditing";
+            this.Btn_Reset.UseVisualStyleBackColor = false;
+            this.Btn_Reset.Click += new System.EventHandler(this.Btn_Reset_Click);
             // 
             // button1
             // 
@@ -876,18 +902,6 @@
             this.playTimer.Interval = 1000;
             this.playTimer.Tick += new System.EventHandler(this.playTimer_Tick_1);
             // 
-            // Btn_Reset
-            // 
-            this.Btn_Reset.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Btn_Reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Reset.Location = new System.Drawing.Point(10, 458);
-            this.Btn_Reset.Name = "Btn_Reset";
-            this.Btn_Reset.Size = new System.Drawing.Size(153, 44);
-            this.Btn_Reset.TabIndex = 906;
-            this.Btn_Reset.Text = "Continue Auditing";
-            this.Btn_Reset.UseVisualStyleBackColor = false;
-            this.Btn_Reset.Click += new System.EventHandler(this.Btn_Reset_Click);
-            // 
             // ImageScrollerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -904,6 +918,7 @@
             this.Load += new System.EventHandler(this.ImageScrollerForm_Load_1);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_ImgVideo)).EndInit();
             this.groupBox_Channel.ResumeLayout(false);
             this.groupBox_Channel.PerformLayout();
             this.controls_grp.ResumeLayout(false);
@@ -1007,5 +1022,6 @@
         private System.Windows.Forms.PictureBox PB_Stop;
         private System.Windows.Forms.PictureBox PB_play;
         private System.Windows.Forms.Button Btn_Reset;
+        private System.Windows.Forms.PictureBox PB_ImgVideo;
     }
 }
