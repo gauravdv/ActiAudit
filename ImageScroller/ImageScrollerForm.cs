@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -17,8 +18,38 @@ namespace ImageScroller
 {
     public partial class ImageScrollerForm : Form
     {
+        string db_Server; // Database
+        string db_Name;
+        string db_UserID;
+        string db_Password;
+        string myIP;  // Computer IP
+        private string conn;
+        private MySqlConnection connect;
 
-        Bitmap PlayImg = Properties.Resources.playbutton40;
+        String cp_ID = frm_SaveChannel.cp_ID;  // Project ID
+        String cp_proName = frm_SaveChannel.c_proName; // Project Name
+
+        private DataTable dataTable = new DataTable();
+
+        private int scrollIndex;
+        private int scrollerMin = 1;
+        private int scrollerMax = 86399;
+        private String scrollMaxTime = "00:00:00";  
+        private String fileFormatType = "Number";
+        private String fileNameExtension = "jpg";
+        private String defaultDateFormat = "yyyy-MM-dd_HH-mm-ss";
+        private String fileDateFormat = "yyyy-MM-dd_HH-mm-ss";
+        private DateTime referenceDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, (DateTime.Now.Day));//-1
+        private DateTime feedDate;
+        private String fileNamePrefix = string.Empty;
+        private String fileNameSuffix = string.Empty;
+        private String fileNameFormat = "{0}{1}{2}.{3}";
+
+        Dictionary<int, ChannelInfo> channelSet = new Dictionary<int, ChannelInfo>();
+        Dictionary<int, ChannelInfo> cs_ScreenShort = new Dictionary<int, ChannelInfo>();
+        ChannelInfo[] ChannelInfos = new ChannelInfo[9];
+       
+        Bitmap PlayImg = Properties.Resources.playbutton40; // Set PlayBlue Image
         Bitmap PlayBlackImg = Properties.Resources.PlayBack;
         Bitmap PauseImg = Properties.Resources.pausebutton40;
         Bitmap PauseBackImg = Properties.Resources.PauseBlack;
@@ -37,52 +68,20 @@ namespace ImageScroller
         Bitmap X16BlackImg = Properties.Resources.x16Black40;
         Bitmap X32BlackImg = Properties.Resources.x32Black40;
 
-        // your data table
-        private DataTable dataTable = new DataTable();
-        string db_Server;
-        string db_Name;
-        string db_UserID;
-        string db_Password;
-        string myIP;
+        private string Path_SaveSnapShot;
+
+        string OpenPath_VideoFile;      
         string FolderOPenpath;
         string batfilepath;
         string cf_UserS = "User_SnapShot";
         string TagType;
         string TagReason;
         string TagImage;
-        String Channel_Tag;
+        string Channel_Tag;
         string Path_SysVideo;
+        string Path_Project;
 
-        ChannelInfo[] ChannelInfos = new ChannelInfo[9];
-        String cp_ID = frm_SaveChannel.cp_ID;
-        String cp_proName = frm_SaveChannel.c_proName;
         int i = 0;
-        private string conn;
-        private MySqlConnection connect;
-        private string Path_SaveSnapShot;
-
-        private int scrollIndex = 1;
-        private int scrollerMin = 1;
-        private int scrollerMax = 86399;
-        private String scrollMaxTime = "00:00:00";
-
-        private String fileFormatType = "Number";
-        private String fileNameExtension = "jpg";
-
-        private String defaultDateFormat = "yyyy-MM-dd_HH-mm-ss";
-        private String fileDateFormat = "yyyy-MM-dd_HH-mm-ss";
-
-        private DateTime referenceDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, (DateTime.Now.Day));//-1
-        private DateTime feedDate;
-
-        private String fileNamePrefix = string.Empty;
-        private String fileNameSuffix = string.Empty;
-
-        private String fileNameFormat = "{0}{1}{2}.{3}";
-        //private String fileBasePath = @"E:\Workspace\Konsultera\Resources\Cams\2017-09-20\{0}";
-
-        Dictionary<int, ChannelInfo> channelSet = new Dictionary<int, ChannelInfo>();
-        Dictionary<int, ChannelInfo> cs_ScreenShort = new Dictionary<int, ChannelInfo>();
 
         public ImageScrollerForm()
         {
@@ -216,7 +215,6 @@ namespace ImageScroller
             }
         }
        
-
         // Get video Path & sanpshot Save from db
         private void Get_dbPath(out string db_VideoPath, out string db_SnapPath, ref string Channel_name) // Get path from db
         {
@@ -246,6 +244,53 @@ namespace ImageScroller
             }
             PChannelReder.Close();
             connect.Close();
+        }
+
+        // Save ScrollIndex in Db
+        private void Save_ScrollIndex()
+        {
+            try
+            {
+                int _scrollIndex = scrollIndex;
+                db_connection();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.CommandText = "UPDATE project_detail SET Scroll_Index='" + scrollIndex + "' WHERE 	Project_ID = '" + cp_ID + "'";
+
+                cmd.Connection = connect;
+                MySqlDataReader RRChannel = cmd.ExecuteReader();
+                connect.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Get ScrollIndex from Db
+        private void Get_ScrollIndex()
+        {
+            try
+            {
+                db_connection();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.CommandText = "SELECT Scroll_Index FROM project_detail Where Project_ID = '" + cp_ID + "'";
+                cmd.Connection = connect;
+                MySqlDataReader cChannelReder = cmd.ExecuteReader();
+
+                while (cChannelReder.Read())
+                {
+                    String SIndex = cChannelReder.GetString("Scroll_Index");
+                    scrollIndex = Int32.Parse(SIndex);
+                }
+                cChannelReder.Close();
+
+                connect.Close();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         #endregion-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -538,7 +583,7 @@ namespace ImageScroller
 
         //Timer
         private void playTimer_Tick_1(object sender, EventArgs e)
-        {
+        {            
             if (scrollIndex >= scrollerMax)
             {
                 scrollIndex = scrollerMax;
@@ -572,7 +617,7 @@ namespace ImageScroller
             return scrollTimeSpan;
         }
 
-        private void playScroller()  // Play Scroller
+        public void playScroller()  // Play Scroller
         {
             playTimer.Enabled = true;
             scrollPause.Enabled = true;
@@ -657,6 +702,7 @@ namespace ImageScroller
             scrollPlay.Enabled = true;
             btn_snapshot.Enabled = true;
         }
+
         public void saveScreenshot2()
         {            
             TagReason = frm_Popoup._TagReason;
@@ -734,21 +780,20 @@ namespace ImageScroller
                 {
                     // MessageBox.Show("There was an error while attempting to save. Saving operation aborted.");
                     ChannelInfos[i].cs_isSelected = false;
-                }
-               
+                }               
             }
             //ChannelInfos[i].cs_isSelected = CheckBoxArray[i].Checked;
             //ChannelInfos[i].cs_isSelected = false;
             afterSave();
-            playScroller();
-                    
+            playScroller();                    
         }
 
         public void Insert_ProjectTag(String TagReason, String Path_SaveSnapShot, String TagImage, String Channel_Tag, String Channel_Name, String Path_SysVideo)
         {
             string Path_Type = Path_SaveSnapShot + "\\" + TagType;
             string Path_reason = Path_SaveSnapShot + "\\" + TagReason; ;
-            string SaveVideoPath = Channel_Tag.Replace("User_SnapShot", "Create_Video");
+            //string SaveVideoPath = Channel_Tag.Replace("User_SnapShot", "Create_Video");
+            string SaveVideoPath = Channel_Tag;
             db_connection();
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = "INSERT INTO project_tag(tag_Type,Path_Type,tag_reason,Path_reason,Project_id,tag_image," +
@@ -857,257 +902,183 @@ namespace ImageScroller
             return currentPlayTime;
         }
         #endregion-----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
+        
         // Convert Snap To Video 
-        private void Set_SnaptoVideo2()
-        {
-            db_connection();
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = "SELECT Path_ChannelTag,Channel_Name,tag_reason,path_SysVideo FROM project_tag WHERE Project_ID = @Project_ID";
-
-            cmd.Parameters.AddWithValue("@Project_ID", cp_ID);
-            cmd.Connection = connect;
-            MySqlDataReader PChannelReder = cmd.ExecuteReader();
-            while (PChannelReder.Read())
-            {
-                string path_TagSnapShort = (PChannelReder["Path_ChannelTag"].ToString());
-                string Channel = (PChannelReder["Channel_Name"].ToString());
-                string Tag_Reason = (PChannelReder["tag_reason"].ToString());
-                string VideoPath = (PChannelReder["path_SysVideo"].ToString());
-               
-                string _Tag_Reason = Tag_Reason.Replace(" ", "_");
-                string ABC = VideoPath + "\\" + "User_SnapShot" + "\\" + Tag_Reason + "\\" + Channel;
-
-                string tempFilename = Path.ChangeExtension(Path.GetTempFileName(), ".bat"); // create bat file
-                string ip_Path_Images = ABC + "\\" + "/%%d.jpg";
-                string p_Video = ABC;
-                string op_path_Video = VideoPath + "\\" + "Create_Video" + "\\" + Tag_Reason + "\\" + Channel + "\\" + "output.mp4";
-                String op_path_Video_2 = "\"" + op_path_Video + "\"";
-
-                string TextFile = " MyImageList.txt";
-                string batfilename = "temp.bat";
-                batfilepath = ABC + "\\" + batfilename;
-                string jpg = "(*.jpg)";
-                string CreateTextFilepath = ABC + "\\" + "MyImageList.txt";
-                string CreateTextFilepath_2 = "\"" + CreateTextFilepath + "\"";
-                FolderOPenpath = VideoPath + "\\" + "Create_Video" + "\\" + Tag_Reason + "\\" + Channel;
-                string FolderOPenpath2 = VideoPath + "\\" + "User_SnapShot" + "\\" + Tag_Reason + "\\" + Channel;
-                if (Directory.Exists(FolderOPenpath2))
-                {
-                    System.IO.Directory.CreateDirectory(FolderOPenpath); // create folder
-                    DirectoryInfo dr = new DirectoryInfo(FolderOPenpath2);
-                    FileInfo[] mFile = dr.GetFiles();
-                    // Create a Text file
-                    using (StreamWriter sw = File.CreateText(CreateTextFilepath))
-                    {
-                        foreach (FileInfo fiTemp in mFile)
-                        {
-                            if (fiTemp.Extension == ".jpg")
-                            {
-                                string LINE = fiTemp.Name;
-                                sw.WriteLine("file " + LINE);
-                            }
-                        }
-                    }
-                    // Create a bat File 
-                    using (StreamWriter writer = new StreamWriter(batfilepath))
-                    {
-                        //writer.WriteLine("ffmpeg -y -r 1 -f concat -safe 0  -i "+ CreateTextFilepath + "  -c:v libx264 -vf fps=25 -pix_fmt yuv420p output.mp4");   
-                        writer.WriteLine("ffmpeg -y -r 1 -f concat -i " + CreateTextFilepath_2 + "  -c:v libx264 -r 25 -pix_fmt yuv420p -t 15 " + op_path_Video_2);
-                        //writer.WriteLine("PAUSE");
-                    }
-                    var startInfo = new ProcessStartInfo();
-                    startInfo.WorkingDirectory = ABC;
-                    startInfo.FileName = batfilename;
-                    startInfo.CreateNoWindow = true;
-                    Process process = Process.Start(startInfo);
-                    process.WaitForExit();
-                    File.Delete(batfilepath);
-                    File.Delete(CreateTextFilepath);
-                    System.Diagnostics.Process.Start(FolderOPenpath);
-                }
-            }
-            MessageBox.Show("Auditing Completed");
-            this.Close();
-        }
-
         private void Set_SnaptoVideo()
         {
-            List<int> CKbox = new List<int>();
-            for (int i = 0; i < 9; i++)
+            SetLoading(true);
+            Thread.Sleep(4000);
+            this.Invoke((MethodInvoker)delegate
             {
-                // Channel Name array
-                string[] ChannelNameArray = new string[9];
-                ChannelNameArray[0] = "Channel_1";
-                ChannelNameArray[1] = "Channel_2";
-                ChannelNameArray[2] = "Channel_3";
-                ChannelNameArray[3] = "Channel_4";
-                ChannelNameArray[4] = "Channel_5";
-                ChannelNameArray[5] = "Channel_6";
-                ChannelNameArray[6] = "Channel_7";
-                ChannelNameArray[7] = "Channel_8";
-                ChannelNameArray[8] = "Channel_9";
+                ABCDE();
+            });           
+        }
+        private void ABCDE()
+        {
+            ProgressDialog frm = new ProgressDialog();
+            try
+            {
+                frm.Show();
+                db_connection();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.CommandText = "SELECT Path_ChannelTag,Channel_Name,tag_reason,path_SysVideo FROM project_tag WHERE Project_ID = @Project_ID";
 
-                string Channel_name = ChannelNameArray[i];
+                cmd.Parameters.AddWithValue("@Project_ID", cp_ID);
+                cmd.Connection = connect;
+                MySqlDataReader PChannelReder = cmd.ExecuteReader();
 
-                Get_dbPath(out string db_VideoPath, out string db_SnapPath, ref Channel_name);
-
-                string tempFilename = Path.ChangeExtension(Path.GetTempFileName(), ".bat"); // create bat file
-                //string ip_Path_Images = "C:\\Gaurav\\ImageScroller\\Doc\\Gaurav\\720\\System_SnapShot/%%d.jpg";
-                //string op_path_Video = "C:\\Gaurav\\ImageScroller\\Doc\\Gaurav\\720\\output.mp4";
-                string ip_Path_Images = db_SnapPath + "/%%d.jpg";
-
-                string p_Video = db_VideoPath + "\\" + cp_ID + "-" + cp_proName + "\\" + "Create_Video" + "\\" + Channel_name;
-                //string op_path_Video = p_Video + "\\" + "output.mp4";
-                string op_path_Video = p_Video + "\\" + Channel_name + "output.mp4";
-                string TextFile = " MyImageList.txt";
-                string batfilename = "temp.bat";
-                batfilepath = db_SnapPath + "\\" + batfilename;
-                string jpg = "(*.jpg)";
-                string CreateTextFilepath = @db_SnapPath + "\\" + "MyImageList.txt";
-                FolderOPenpath = @db_SnapPath;
-                if (FolderOPenpath != "")
+                if (PChannelReder.HasRows != false)
                 {
-                    System.IO.Directory.CreateDirectory(p_Video); // create folder
-                    DirectoryInfo dr = new DirectoryInfo(FolderOPenpath);
-                    FileInfo[] mFile = dr.GetFiles();
-                    // Create a Text file
-                    using (StreamWriter sw = File.CreateText(CreateTextFilepath))
+                    while (PChannelReder.Read())
                     {
-                        foreach (FileInfo fiTemp in mFile)
+                        string path_TagSnapShort = (PChannelReder["Path_ChannelTag"].ToString());
+                        string Channel = (PChannelReder["Channel_Name"].ToString());
+                        string Tag_Reason = (PChannelReder["tag_reason"].ToString());
+                        string VideoPath = (PChannelReder["path_SysVideo"].ToString());
+
+                        string _Tag_Reason = Tag_Reason.Replace(" ", "_");  // Replace blank to "_"
+                        string ABC = VideoPath + "\\" + "User_SnapShot" + "\\" + Tag_Reason + "\\" + Channel;  // SnapShot & Video Path
+
+                        string tempFilename = Path.ChangeExtension(Path.GetTempFileName(), ".bat"); // create bat file
+                        string ip_Path_Images = ABC + "\\" + "/%%d.jpg";
+                        string p_Video = ABC;
+                        string op_path_Video = VideoPath + "\\" + "Create_Video" + "\\" + Tag_Reason + "\\" + Channel + "\\" + "output.mp4";
+                        string VideoSave = ABC + "\\" + "output.mp4";
+                        String op_path_Video_2 = "\"" + VideoSave + "\"";
+
+                        string TextFile = " MyImageList.txt";
+                        string batfilename = "temp.bat";
+                        batfilepath = ABC + "\\" + batfilename;
+                        string jpg = "(*.jpg)";
+
+                        string CreateTextFilepath = ABC + "\\" + "MyImageList.txt";   // Text file path
+                        string CreateTextFilepath_2 = "\"" + CreateTextFilepath + "\""; // Text file path " "
+
+                        FolderOPenpath = VideoPath + "\\" + "Create_Video" + "\\" + Tag_Reason + "\\" + Channel;
+                        string FolderOPenpath2 = VideoPath + "\\" + "User_SnapShot" + "\\" + Tag_Reason + "\\" + Channel;
+                        if (Directory.Exists(FolderOPenpath2))
                         {
-                            if (fiTemp.Extension == ".jpg")
+                            //System.IO.Directory.CreateDirectory(FolderOPenpath); // create folder
+                            DirectoryInfo dr = new DirectoryInfo(FolderOPenpath2);
+                            FileInfo[] mFile = dr.GetFiles();
+                            // Create a Text file
+                            using (StreamWriter sw = File.CreateText(CreateTextFilepath))
                             {
-                                string LINE = fiTemp.Name;
-                                sw.WriteLine("file " + LINE);
+                                foreach (FileInfo fiTemp in mFile)
+                                {
+                                    if (fiTemp.Extension == ".jpg")
+                                    {
+                                        string LINE = fiTemp.Name;
+                                        sw.WriteLine("file " + LINE);
+                                    }
+                                }
                             }
+                            // Create a bat File 
+                            using (StreamWriter writer = new StreamWriter(batfilepath))
+                            {
+                                //writer.WriteLine("ffmpeg -y -r 1 -f concat -safe 0  -i "+ CreateTextFilepath + "  -c:v libx264 -vf fps=25 -pix_fmt yuv420p output.mp4");   
+                                writer.WriteLine("ffmpeg -y -r 1 -f concat -i " + CreateTextFilepath_2 + "  -c:v libx264 -r 25 -pix_fmt yuv420p -t 15 " + op_path_Video_2);
+                                //writer.WriteLine("PAUSE");
+                            }
+                            var startInfo = new ProcessStartInfo();
+                            startInfo.WorkingDirectory = ABC;
+                            startInfo.FileName = batfilename;
+                            startInfo.CreateNoWindow = true;
+                            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                            Process process = Process.Start(startInfo);
+                            process.WaitForExit();
+                            File.Delete(batfilepath);
+                            File.Delete(CreateTextFilepath);
+                            //System.Diagnostics.Process.Start(FolderOPenpath); //open a video path
                         }
+
+                        OpenPath_VideoFile = VideoPath;
                     }
-                    // Create a bat File 
-                    using (StreamWriter writer = new StreamWriter(batfilepath))
-                    {
-                        //writer.WriteLine("ffmpeg -y -r 1 -f concat -safe 0  -i "+ CreateTextFilepath + "  -c:v libx264 -vf fps=25 -pix_fmt yuv420p output.mp4");     
-                        writer.WriteLine("ffmpeg -y -r 1 -f concat -i " + CreateTextFilepath + "  -c:v libx264 -r 25 -pix_fmt yuv420p -t 15 " + op_path_Video);
-                        //writer.WriteLine("PAUSE");
-                    }
-                    var startInfo = new ProcessStartInfo();
-                    startInfo.WorkingDirectory = db_SnapPath;
-                    startInfo.FileName = batfilename;
-                    startInfo.CreateNoWindow = true;
-                    Process process = Process.Start(startInfo);
-                    process.WaitForExit();
-                    File.Delete(batfilepath);
-                    File.Delete(CreateTextFilepath);
-                    System.Diagnostics.Process.Start(p_Video);
+
+                    System.Diagnostics.Process.Start(OpenPath_VideoFile); //open a video path
+                    PB_ImgVideo.Visible = false;
+                    this.Cursor = Cursors.Default;
+                    frm.Close();
+                    MessageBox.Show("Auditing Completed");
+                    this.Close();
+
                 }
-                // Process.Start(FolderOPenpath);               
+                else
+                {
+                    MessageBox.Show("No snapshot Taken Yet ......." + " Take SnapShot First");
+                }                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         // Import Excel All Db data
         private void Create_Excel()
         {
-            DataTable dataTable = new DataTable { TableName = "MyTableName" };
-            try
+            SetLoading(true);
+            Thread.Sleep(4000);
+            this.Invoke((MethodInvoker)delegate
             {
-                string Path_CSVFile;
-                string Save_CSVFile;
-               
-                db_connection();
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.CommandText = "SELECT Project_id, tag_type, tag_reason, Channel_Name, tag_image, Path_ChannelTag, Path_VideoTag, Path_SysVideo, " +
-                                    "date_time FROM `project_tag` WHERE Project_id = '" + cp_ID + "'";
-                cmd.Connection = connect;               
-
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                da.Fill(dataTable);                              
-            
-                    BindingSource bSource = new BindingSource();
-                bSource.DataSource = dataTable;
-
-                StringBuilder sb = new StringBuilder();
-
-                IEnumerable<string> columnNames = dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName);
-                sb.AppendLine(string.Join(",", columnNames));
-
-                foreach (DataRow row in dataTable.Rows)
+                DataTable dataTable = new DataTable { TableName = "MyTableName" };
+                try
                 {
-                    IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
-                    sb.AppendLine(string.Join(",", fields));
+                    db_connection();
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.CommandText = "SELECT PT.Project_id AS Project_ID, PD.Project_name AS Project_Name, PD.date_time AS Project_Create_DateTime, " +
+                                        "PT.tag_type As Project_Type, PT.tag_reason AS SnapShot_Reason, " +
+                                        "PT.tag_image AS SnapShot_Images, PT.Channel_Name AS Channel_Name, " +
+                                        "PT.Path_VideoTag AS Create_Video_Path, PT.Path_SysVideo AS Project_Path, PT.date_time AS SnapShot_Crate_DateTime" + " " +
+                                        "FROM project_tag PT INNER JOIN project_detail PD ON PT.Project_id = PD.Project_ID " +
+                                        "WHERE PT.Project_id = '" + cp_ID + "'";
+                    cmd.Connection = connect;
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dataTable);
+
+                    BindingSource bSource = new BindingSource();
+                    bSource.DataSource = dataTable;
+
+                    StringBuilder sb = new StringBuilder();
+
+                    IEnumerable<string> columnNames = dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName);
+                    sb.AppendLine(string.Join(",", columnNames));
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
+                        sb.AppendLine(string.Join(",", fields));
+                    }
+                    if (dataTable != null && dataTable.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in dataTable.Rows)
+                        {
+                            Path_Project = (dataTable.Rows[0][8]).ToString();  //Path_SysVideo 
+                            string FileCSVName = "AuditComplete - " + cp_ID + " - " + cp_proName + ".csv";
+                            string Save_CSVFile = Path_Project + "\\" + FileCSVName;  // Save CSV file path   
+                            File.WriteAllText(Save_CSVFile, sb.ToString());
+                        }
+                        SetLoading(false);
+                        MessageBox.Show("Export Data Successfully");
+                        System.Diagnostics.Process.Start(Path_Project); //open file save path
+                    }
+                    else
+                    {
+                        MessageBox.Show("No SnapShort Data Found .....");
+                    }
+                    connect.Close();
                 }
-                
-                //string prijectid = (dataTable.Rows[-1][7]).ToString();
-                Path_CSVFile = (dataTable.Rows[0][7]).ToString();  //Path_VideoTag
-                string FileCSVName = "AuditComplete - " + cp_ID + " - " + cp_proName + ".csv";
-                Save_CSVFile = Path_CSVFile + "\\" + FileCSVName;   
-                File.WriteAllText(Save_CSVFile, sb.ToString());
-                //File.WriteAllText("C:\\_Gaurav\\C#\\ImageScroller\\MySql\\Acti Audit\\Testing Video\\194-BB 2\\test.csv", sb.ToString());
-
-                ////DataSet ds = new DataSet("New_DataSet");
-                ////ds.Locale = System.Threading.Thread.CurrentThread.CurrentCulture;
-                ////da.Fill(dataTable);
-                ////ds.Tables.Add(dataTable);
-
-                ////dataTable.WriteXml("C:\\_Gaurav\\C#\\ImageScroller\\MySql\\Acti Audit\\Testing Video\\193-BB 1\\agent.xlsx");
-                MessageBox.Show("Export Data Successfully");
-                connect.Close();
-
-
-                //Excel.Application oXL;
-                //Excel._Workbook oWB;
-                //Excel._Worksheet oSheet;
-                //Excel.Range oRng;
-
-                //////try
-                //////{
-                //////    //Start Excel and get Application object.
-                //////    oXL = new Excel.Application();
-                //////    oXL.Visible = true;
-
-                //////    //Get a new workbook.
-                //////    oWB = (Excel._Workbook)(oXL.Workbooks.Add(Missing.Value));
-                //////    oSheet = (Excel._Worksheet)oWB.ActiveSheet;
-
-                //////    //Add table headers going cell by cell.
-                //////    oSheet.Cells[1, 1] = "First Name";
-                //////    oSheet.Cells[1, 2] = "Last Name";
-                //////    oSheet.Cells[1, 3] = "Full Name";
-                //////    oSheet.Cells[1, 4] = "Salary";
-
-                //////    //Format A1:D1 as bold, vertica
-                //////}
-                //////catch (Exception theException)
-                //////{
-                //////    String errorMessage;
-                //////    errorMessage = "Error: ";
-                //////    errorMessage = String.Concat(errorMessage, theException.Message);
-                //////    errorMessage = String.Concat(errorMessage, " Line: ");
-                //////    errorMessage = String.Concat(errorMessage, theException.Source);
-
-                //////    MessageBox.Show(errorMessage, "Error");
-                //////}
-                //MySqlDataReader cChannelReder = cmd.ExecuteReader();
-                //while (cChannelReder.Read())
-                //{
-                //    cp_ID = cChannelReder.GetString("Project_ID");
-                //    TagType = cChannelReder.GetString("Project_Type");  // Current Project Type
-                //}
-                //cChannelReder.Close();
-                //connect.Close();
-                //db_ProjectID = cp_ID;
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            });
+            
+            SetLoading(false);
+            
         }     
-
-
+        
 
         #region Load , Unload
         // init
@@ -1158,20 +1129,20 @@ namespace ImageScroller
             loadChannels(); // Load Channels
         }
 
-        //
+        // Load 
         private void FormLoad()
         {
-            myIP = frm_SaveChannel.myIP;
-            // CurrProjectName_label.Text = frm_SaveChannel.label2.Text;
-            CurrProjectName_label.Text = frm_SaveChannel.c_proName;
-            lab_ProjectType.Text = frm_SaveChannel.c_proType;
-            Curr_ProjectID.Text = cp_ID;
+            myIP = frm_SaveChannel.myIP;  // Computer IP
+            CurrProjectName_label.Text = frm_SaveChannel.c_proName;  // Project Name
+            lab_ProjectType.Text = frm_SaveChannel.c_proType;  // Project Type
+            Curr_ProjectID.Text = cp_ID; // Project ID
             Get_dbSaveChannel(); // Get Chaecck DB Save Channel 
             loadChannels(); // Load Channels
             btn_Stop.Enabled = false;
             scrollPause.Enabled = false;
             btn_snapshot.Enabled = false;
         }
+        
         // Form Load
         private void ImageScrollerForm_Load_1(object sender, EventArgs e)
         {
@@ -1179,6 +1150,7 @@ namespace ImageScroller
             PB_play.Image = PlayImg;
             PB_Stop.Image = StopImg;
             PB_X.Image = X1Img;
+            //Get_ScrollIndex();
         }
 
         // btn Play
@@ -1190,6 +1162,60 @@ namespace ImageScroller
             btn_snapshot.Enabled = true;
             btn_Stop.Enabled = true;
             scrollPause.Enabled = true;
+        }
+        private void PB_play_Click(object sender, EventArgs e)
+        {
+            if (channel1_chk.Checked != false || channel2_chk.Checked != false || channel3_chk.Checked != false || channel4_chk.Checked != false ||
+                channel5_chk.Checked != false || channel6_chk.Checked != false || channel7_chk.Checked != false || channel8_chk.Checked != false || channel9_chk.Checked != false)
+            {
+                if (PB_play.Image == PlayImg || PB_play.Image == PlayBlackImg)
+                {
+                    //btn_2x.Text = "1X";
+                    //playTimer.Interval = 1000;
+                    playScroller(); // Play Channels
+                    btn_snapshot.Enabled = true;
+                    btn_Stop.Enabled = true;
+                    scrollPause.Enabled = true;
+                    btn_SnapTOVideo.Enabled = true;
+                    button1.Enabled = true;
+                    PB_play.Image = PauseBackImg;
+                }
+                else
+                {
+                    PB_play.Image = PlayBlackImg;
+                    btn_SnapTOVideo.Enabled = true;
+                    pauseScroller();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Check Atlist One Channel");
+            }
+
+                
+        }
+
+        private void PB_play_MouseEnter(object sender, EventArgs e)
+        {
+            if (PB_play.Image == PlayImg)
+            {
+                PB_play.Image = PlayBlackImg;
+            }
+            else if (PB_play.Image == PauseImg)
+            {
+                PB_play.Image = PauseBackImg;
+            }
+        }
+        private void PB_play_MouseLeave(object sender, EventArgs e)
+        {
+            if (PB_play.Image == PlayBlackImg)
+            {
+                PB_play.Image = PlayImg;
+            }
+            else if (PB_play.Image == PauseBackImg)
+            {
+                PB_play.Image = PauseImg;
+            }
         }
 
         // btn Pause
@@ -1203,6 +1229,143 @@ namespace ImageScroller
         {
             unloadChannels();
             FormLoad();
+        }
+        private void PB_Stop_Click(object sender, EventArgs e)
+        {
+            unloadChannels();
+            FormLoad();
+            PB_play.Image = PlayImg; // Set Play image
+            PB_X.Image = X1Img;   // Set X image
+            btn_2x.Text = "1X";
+            playTimer.Interval = 1000;
+            btn_SnapTOVideo.Enabled = true; // SnapShort
+            button1.Enabled = true; // Btn Reset       
+        }
+
+        private void PB_Stop_MouseEnter(object sender, EventArgs e)
+        {
+            PB_Stop.Image = StopBlackImg;
+        }
+        private void PB_Stop_MouseLeave(object sender, EventArgs e)
+        {
+            PB_Stop.Image = StopImg;
+        }
+
+        // Btn X1,X2.....X32
+        private void btn_2x_Click(object sender, EventArgs e)
+        {
+            if (btn_2x.Text == "1X")
+            {
+                playTimer.Interval = 500;
+                scrollPlay.Enabled = true;
+                btn_2x.Text = "2X";
+            }
+            else if (btn_2x.Text == "2X")
+            {
+                playTimer.Interval = 250;
+                scrollPlay.Enabled = true;
+                btn_2x.Text = "4X";
+            }
+            else if (btn_2x.Text == "4X")
+            {
+                playTimer.Interval = 125;
+                scrollPlay.Enabled = true;
+                btn_2x.Text = "8X";
+            }
+            else if (btn_2x.Text == "8X")
+            {
+                playTimer.Interval = 62;
+                scrollPlay.Enabled = true;
+                btn_2x.Text = "16X";
+            }
+            else if (btn_2x.Text == "16X")
+            {
+                playTimer.Interval = 31;
+                scrollPlay.Enabled = true;
+                btn_2x.Text = "32X";
+            }
+            else if (btn_2x.Text == "32X")
+            {
+                playTimer.Interval = 1000;
+                scrollPlay.Enabled = true;
+                btn_2x.Text = "1X";
+            }
+        }
+        private void PB_X_Click(object sender, EventArgs e)
+        {
+            if (btn_2x.Text == "1X")
+            {
+                playTimer.Interval = 500;
+                scrollPlay.Enabled = true;
+                btn_2x.Text = "2X";
+                PB_X.Image = X2BlackImg;
+            }
+            else if (btn_2x.Text == "2X")
+            {
+                playTimer.Interval = 250;
+                scrollPlay.Enabled = true;
+                btn_2x.Text = "4X";
+                PB_X.Image = X4BlackImg;
+            }
+            else if (btn_2x.Text == "4X")
+            {
+                playTimer.Interval = 125;
+                scrollPlay.Enabled = true;
+                btn_2x.Text = "8X";
+                PB_X.Image = X8BlackImg;
+            }
+            else if (btn_2x.Text == "8X")
+            {
+                playTimer.Interval = 62;
+                scrollPlay.Enabled = true;
+                btn_2x.Text = "16X";
+                PB_X.Image = X16BlackImg;
+            }
+            else if (btn_2x.Text == "16X")
+            {
+                playTimer.Interval = 31;
+                scrollPlay.Enabled = true;
+                btn_2x.Text = "32X";
+                PB_X.Image = X32BlackImg;
+            }
+            else if (btn_2x.Text == "32X")
+            {
+                playTimer.Interval = 1000;
+                scrollPlay.Enabled = true;
+                btn_2x.Text = "1X";
+                PB_X.Image = X1BlackImg;
+            }
+        }
+
+        private void PB_X_MouseEnter(object sender, EventArgs e)
+        {
+            if (PB_X.Image == X1Img)
+            { PB_X.Image = X1BlackImg; }
+            else if (PB_X.Image == X2Img)
+            { PB_X.Image = X2BlackImg; }
+            else if (PB_X.Image == X4Img)
+            { PB_X.Image = X4BlackImg; }
+            else if (PB_X.Image == X8Img)
+            { PB_X.Image = X8BlackImg; }
+            else if (PB_X.Image == X16Img)
+            { PB_X.Image = X16BlackImg; }
+            else if (PB_X.Image == X32Img)
+            { PB_X.Image = X32BlackImg; }
+        }
+        private void PB_X_MouseLeave(object sender, EventArgs e)
+        {
+            if (PB_X.Image == X1BlackImg)
+            { PB_X.Image = X1Img; }
+            else if (PB_X.Image == X2BlackImg)
+            { PB_X.Image = X2Img; }
+            else if (PB_X.Image == X4BlackImg)
+            { PB_X.Image = X4Img; }
+            else if (PB_X.Image == X8BlackImg)
+            { PB_X.Image = X8Img; }
+            else if (PB_X.Image == X16BlackImg)
+            { PB_X.Image = X16Img; }
+            else if (PB_X.Image == X32BlackImg)
+            { PB_X.Image = X32Img; }
         }
 
         // btn Snapshot
@@ -1225,14 +1388,94 @@ namespace ImageScroller
             }
         }
 
+        // Ctr + S for snapshot
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (msg.Msg == 256)
+            {
+                if (keyData == (Keys.Control | Keys.S))
+                {
+                    if (checkBox1.Checked == false && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false && checkBox5.Checked == false &&
+                 checkBox6.Checked == false && checkBox7.Checked == false && checkBox8.Checked == false && checkBox9.Checked == false)
+                    {
+                        MessageBox.Show("Select Channel For SnapShot");
+                    }
+                    else
+                    {
+                        beforeSave();
+                        pauseScroller();
+                        // saveScreenshot();
+                        frm_Popoup fP = new frm_Popoup(this);
+                        fP.Show();
+                        //saveScreenshot();
+                        //afterSave();
+                    }
+                }
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        //Btn continue
+        private void Btn_Reset_Click(object sender, EventArgs e)
+        {
+            if (channel1_chk.Checked != false || channel2_chk.Checked != false || channel3_chk.Checked != false || channel4_chk.Checked != false ||
+               channel5_chk.Checked != false || channel6_chk.Checked != false || channel7_chk.Checked != false || channel8_chk.Checked != false || channel9_chk.Checked != false)
+            {
+                Get_ScrollIndex();
+                if (scrollIndex != 0)
+                {
+                    PB_play.Image = PauseImg;
+                    btn_2x.Text = "1X";
+                    playTimer.Interval = 1000;
+                    PB_X.Image = X1Img;
+                    btn_SnapTOVideo.Enabled = true;
+                    button1.Enabled = true;
+                    playScroller(); // Play Channels
+                }
+                else
+                {
+                    MessageBox.Show("First Time Auditing For This Project");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Check Atlist One Channel");
+            }
+        }
+
+        // btn Export CSV
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Thread threadInput = new Thread(Create_Excel); // Create csv file from db
+                threadInput.Start();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         // btn Convert Snap To Video 
         private void btn_SnapTOVideo_Click(object sender, EventArgs e)
         {
-            Set_SnaptoVideo2();
-            //Create_Excel();
+            Save_ScrollIndex(); // Save scroll index in Db            
 
+            try
+            {
+                Thread threadInput = new Thread(Set_SnaptoVideo); // ffmpeg Snap to Video    
+                threadInput.Start();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
-        // Back & and Unload Channels
+       
+        //Not Used
         private void btn_Back_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -1245,23 +1488,20 @@ namespace ImageScroller
             initChannels();
             unloadChannel_cleanup();
         }
-
         private void ImageScrollerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             //frm_SaveChannel C_FSC = new frm_SaveChannel();
             //C_FSC.Show();
         }
-
         private void btn_Load_Click(object sender, EventArgs e)
         {
             //loadChannels(); // Load Channels
         }
-
-       
+               
         #endregion-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-        #region Mouse Click Event
+        #region Mouse Click Event // Select PictureBox For SnapShot
         private void panel2_MouseClick(object sender, MouseEventArgs e)
         {           
             if (checkBox1.Checked != true)
@@ -1398,198 +1638,31 @@ namespace ImageScroller
                 checkBox9.Checked = false;
             }
         }
-
-
         #endregion
 
-        private void btn_2x_Click(object sender, EventArgs e)
+        // Loading Picture Box
+        private void SetLoading(bool displayLoader)
         {
-            if (btn_2x.Text == "1X")
+            if (displayLoader)
             {
-                playTimer.Interval = 500;
-                scrollPlay.Enabled = true;
-                btn_2x.Text = "2X";
-            }
-            else if (btn_2x.Text == "2X")
-            {
-                playTimer.Interval = 250;
-                scrollPlay.Enabled = true;
-                btn_2x.Text = "4X";
-            }
-            else if (btn_2x.Text == "4X")
-            {
-                playTimer.Interval = 125;
-                scrollPlay.Enabled = true;
-                btn_2x.Text = "8X";
-            }
-            else if (btn_2x.Text == "8X")
-            {
-                playTimer.Interval = 62;
-                scrollPlay.Enabled = true;
-                btn_2x.Text = "16X";
-            }
-            else if (btn_2x.Text == "16X")
-            {
-                playTimer.Interval = 31;
-                scrollPlay.Enabled = true;
-                btn_2x.Text = "32X";
-            }
-            else if (btn_2x.Text == "32X")
-            {
-                playTimer.Interval = 1000;
-                scrollPlay.Enabled = true;
-                btn_2x.Text = "1X";
-            }
-        }                  
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            Create_Excel();
-        }
-
-        private void PB_play_Click(object sender, EventArgs e)
-        {
-            if (PB_play.Image == PlayImg || PB_play.Image == PlayBlackImg)
-            {
-                //btn_2x.Text = "1X";
-                //playTimer.Interval = 1000;
-                playScroller(); // Play Channels
-                btn_snapshot.Enabled = true;
-                btn_Stop.Enabled = true;
-                scrollPause.Enabled = true;
-                btn_SnapTOVideo.Enabled = false;
-                button1.Enabled = false;
-                PB_play.Image = PauseBackImg;
+                this.Invoke((MethodInvoker)delegate
+                {
+                    PB_ImgVideo.BackColor = Color.Transparent;
+                    PB_ImgVideo.Visible = true;
+                    Size size = new Size(170, 140);
+                    PB_ImgVideo.Size = size;
+                    this.Cursor = Cursors.WaitCursor;
+                });
             }
             else
             {
-                PB_play.Image = PlayBlackImg;
-                pauseScroller();
+                this.Invoke((MethodInvoker)delegate
+                {
+                    PB_ImgVideo.Visible = false;
+                    this.Cursor = Cursors.Default;
+                });
             }
         }
 
-        private void PB_Stop_Click(object sender, EventArgs e)
-        {
-            unloadChannels();
-            FormLoad();
-            PB_play.Image = PlayImg;
-            btn_2x.Text = "1X";
-            playTimer.Interval = 1000;
-            PB_X.Image = X1Img;
-            btn_SnapTOVideo.Enabled = true;
-            button1.Enabled = true;
-        }
-
-        private void PB_X_Click(object sender, EventArgs e)
-        {
-            if (btn_2x.Text == "1X")
-            {
-                playTimer.Interval = 500;
-                scrollPlay.Enabled = true;
-                btn_2x.Text = "2X";
-                PB_X.Image = X2BlackImg;
-            }
-            else if (btn_2x.Text == "2X")
-            {
-                playTimer.Interval = 250;
-                scrollPlay.Enabled = true;
-                btn_2x.Text = "4X";
-                PB_X.Image = X4BlackImg;
-            }
-            else if (btn_2x.Text == "4X")
-            {
-                playTimer.Interval = 125;
-                scrollPlay.Enabled = true;
-                btn_2x.Text = "8X";
-                PB_X.Image = X8BlackImg;
-            }
-            else if (btn_2x.Text == "8X")
-            {
-                playTimer.Interval = 62;
-                scrollPlay.Enabled = true;
-                btn_2x.Text = "16X";
-                PB_X.Image = X16BlackImg;
-            }
-            else if (btn_2x.Text == "16X")
-            {
-                playTimer.Interval = 31;
-                scrollPlay.Enabled = true;
-                btn_2x.Text = "32X";
-                PB_X.Image = X32BlackImg;
-            }
-            else if (btn_2x.Text == "32X")
-            {
-                playTimer.Interval = 1000;
-                scrollPlay.Enabled = true;
-                btn_2x.Text = "1X";
-                PB_X.Image = X1BlackImg;
-            }
-        }
-
-        private void PB_play_MouseEnter(object sender, EventArgs e)
-        {
-            if (PB_play.Image == PlayImg)
-            {
-                PB_play.Image = PlayBlackImg;
-            }
-            else if (PB_play.Image == PauseImg)
-            {
-                PB_play.Image = PauseBackImg;
-            }
-        }
-
-        private void PB_play_MouseLeave(object sender, EventArgs e)
-        {
-            if (PB_play.Image == PlayBlackImg)
-            {
-                PB_play.Image = PlayImg;
-            }
-            else if (PB_play.Image == PauseBackImg)
-            {
-                PB_play.Image = PauseImg;
-            }
-        }
-
-        private void PB_Stop_MouseEnter(object sender, EventArgs e)
-        {
-            PB_Stop.Image = StopBlackImg;
-        }
-
-        private void PB_Stop_MouseLeave(object sender, EventArgs e)
-        {
-            PB_Stop.Image = StopImg;
-        }
-
-        private void PB_X_MouseEnter(object sender, EventArgs e)
-        {
-            if (PB_X.Image == X1Img)
-            { PB_X.Image = X1BlackImg; }
-            else if (PB_X.Image == X2Img)
-            { PB_X.Image = X2BlackImg; }
-            else if (PB_X.Image == X4Img)
-            { PB_X.Image = X4BlackImg; }
-            else if (PB_X.Image == X8Img)
-            { PB_X.Image = X8BlackImg; }
-            else if (PB_X.Image == X16Img)
-            { PB_X.Image = X16BlackImg; }
-            else if (PB_X.Image == X32Img)
-            { PB_X.Image = X32BlackImg; }
-        }
-
-        private void PB_X_MouseLeave(object sender, EventArgs e)
-        {
-            if (PB_X.Image == X1BlackImg)
-            { PB_X.Image = X1Img; }
-            else if (PB_X.Image == X2BlackImg)
-            { PB_X.Image = X2Img; }
-            else if (PB_X.Image == X4BlackImg)
-            { PB_X.Image = X4Img; }
-            else if (PB_X.Image == X8BlackImg)
-            { PB_X.Image = X8Img; }
-            else if (PB_X.Image == X16BlackImg)
-            { PB_X.Image = X16Img; }
-            else if (PB_X.Image == X32BlackImg)
-            { PB_X.Image = X32Img; }
-        }
     }
 }

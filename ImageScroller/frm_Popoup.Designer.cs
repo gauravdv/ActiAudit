@@ -50,7 +50,7 @@
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(60, 135);
+            this.btn_Save.Location = new System.Drawing.Point(59, 135);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(104, 35);
             this.btn_Save.TabIndex = 4;
@@ -84,6 +84,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frm_Popoup";
             this.Text = "Acti Audit : SnapShot Title";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm_Popoup_FormClosed);
             this.Load += new System.EventHandler(this.frm_Popoup_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
