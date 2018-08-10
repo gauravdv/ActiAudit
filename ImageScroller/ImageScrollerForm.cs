@@ -54,19 +54,40 @@ namespace ImageScroller
         Bitmap PauseImg = Properties.Resources.pausebutton40;
         Bitmap PauseBackImg = Properties.Resources.PauseBlack;
         Bitmap StopImg = Properties.Resources.stopbutton40;
-        Bitmap StopBlackImg = Properties.Resources.StopBlack;
-        Bitmap X1Img = Properties.Resources.x1button40;
-        Bitmap X2Img = Properties.Resources.x2button40;
-        Bitmap X4Img = Properties.Resources.x4button40;
-        Bitmap X8Img = Properties.Resources.x8button40;
-        Bitmap X16Img = Properties.Resources.x16button40;
-        Bitmap X32Img = Properties.Resources.x32button40;
-        Bitmap X1BlackImg = Properties.Resources.x1Black40;
-        Bitmap X2BlackImg = Properties.Resources.x2Black4000;
-        Bitmap X4BlackImg = Properties.Resources.x4Black40;
-        Bitmap X8BlackImg = Properties.Resources.x8Black40;
-        Bitmap X16BlackImg = Properties.Resources.x16Black40;
-        Bitmap X32BlackImg = Properties.Resources.x32Black40;
+        Bitmap StopBlackImg = Properties.Resources.StopBlack;       
+
+        Bitmap ContinueGryImg = Properties.Resources.Continue_30_grey;
+        Bitmap ContinueOrgImg = Properties.Resources.Continue_30_orange;
+
+        Bitmap AuditGryImg = Properties.Resources.audit_30_grey;
+        Bitmap AuditOrgImg = Properties.Resources.audit_30_orange;
+
+        Bitmap FileGryImg = Properties.Resources.file_30_grey;
+        Bitmap FileOrgImg = Properties.Resources.file_30_orange;
+
+        Bitmap StopGryImg = Properties.Resources.stop_30_grey;
+        Bitmap StopOrgImg = Properties.Resources.stop_30_orange;
+
+        Bitmap PauseGryImg = Properties.Resources.pause_30_grey;
+        Bitmap PauseOrgImg = Properties.Resources.pause_30_orange;
+
+        Bitmap PlayGryImg = Properties.Resources.play_30_grey;
+        Bitmap PlayOrgImg = Properties.Resources.play_30_orange;
+
+        Bitmap x1GryImg = Properties.Resources._1x_30_gry;
+        Bitmap X1OrgImg = Properties.Resources._1x_30_org;
+        Bitmap x2GryImg = Properties.Resources._2x_30_gry;
+        Bitmap X2OrgImg = Properties.Resources._2x_30_org;
+        Bitmap x4GryImg = Properties.Resources._4x_30_gry;
+        Bitmap X4OrgImg = Properties.Resources._4x_30_org;
+        Bitmap x8GryImg = Properties.Resources._8x_30_gry;
+        Bitmap X8OrgImg = Properties.Resources._8x_30_org;
+        Bitmap x16GryImg = Properties.Resources._16x_30_gry;
+        Bitmap X16rgImg = Properties.Resources._16x_30_org;
+        Bitmap x32ryImg = Properties.Resources._32x_30_gry;
+        Bitmap X32rgImg = Properties.Resources._32x_30_org;
+
+        Bitmap Spinner_org_148px = Properties.Resources.Spinner_Org_148px;
 
         private string Path_SaveSnapShot;
 
@@ -360,12 +381,13 @@ namespace ImageScroller
             {
                 if (CheckBoxArray[i].Checked == true)
                 {
+                    CheckBoxArray[i].ForeColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
                     ChannelInfos[i] = new ChannelInfo();
                     ChannelInfos[i].ImageViewer = pictureboxes[i];
                     ChannelInfos[i].ChannelNumber = i;
                     ChannelInfos[i].FileBasePath = null;
                     channelSet.Add(i, ChannelInfos[i]);
-
+                    
                     channelSet[i].isSelected = CheckBoxArray[i].Checked;
 
                     string Channel_name = ChannelNameArray[i];
@@ -386,7 +408,7 @@ namespace ImageScroller
                         String Path_video = PChannelReder.GetString("path_Video"); // video path where we select
 
                         // Path_SaveSnapShot = Path_video + "\\" + CurrProjectName_label.Text + "\\" + cf_UserS; // save snapshot path
-                        Path_SaveSnapShot = Path_video + "\\" + cp_ID+"-" + cp_proName + "\\" + cf_UserS; // save snapshot path
+                        Path_SaveSnapShot = Path_video + "\\" + cp_ID + "-" + cp_proName + "\\" + cf_UserS; // save snapshot path
                     }
                     PChannelReder.Close();
                     connect.Close();
@@ -394,6 +416,10 @@ namespace ImageScroller
                     //channelSet[i].FileBasePath = TextBoxArry[i].Text;
                     CKbox.Add(ChannelInfos[i].ChannelNumber); // check true channelSet put into CKbox
                     //ChannelInfos[i]
+                }
+                else
+                {
+                    CheckBoxArray[i].ForeColor = System.Drawing.ColorTranslator.FromHtml("#898989");
                 }
             }
             int count = CKbox.Count;    // count 
@@ -998,13 +1024,15 @@ namespace ImageScroller
                     System.Diagnostics.Process.Start(OpenPath_VideoFile); //open a video path
                     PB_ImgVideo.Visible = false;
                     this.Cursor = Cursors.Default;
+                    SetLoading(false);
                     frm.Close();
                     MessageBox.Show("Auditing Completed");
                     this.Close();
-
                 }
                 else
                 {
+                    SetLoading(false);
+                    frm.Close();
                     MessageBox.Show("No snapshot Taken Yet ......." + " Take SnapShot First");
                 }                
             }
@@ -1115,7 +1143,7 @@ namespace ImageScroller
         }
         private void loadChannel_cleanup()
         {          
-            controls_grp.Enabled = true;
+            //controls_grp.Enabled = true;
             btn_snapshot.Enabled = true;
             btn_Stop.Enabled = true;
         }
@@ -1146,10 +1174,12 @@ namespace ImageScroller
         // Form Load
         private void ImageScrollerForm_Load_1(object sender, EventArgs e)
         {
+            WindowState = FormWindowState.Maximized;
+            SetLoading(false);
             FormLoad();
-            PB_play.Image = PlayImg;
-            PB_Stop.Image = StopImg;
-            PB_X.Image = X1Img;
+            PB_play.Image = PlayGryImg;
+            //PB_Stop.Image = StopImg;
+            PB_X.Image = x1GryImg;
             //Get_ScrollIndex();
         }
 
@@ -1168,7 +1198,7 @@ namespace ImageScroller
             if (channel1_chk.Checked != false || channel2_chk.Checked != false || channel3_chk.Checked != false || channel4_chk.Checked != false ||
                 channel5_chk.Checked != false || channel6_chk.Checked != false || channel7_chk.Checked != false || channel8_chk.Checked != false || channel9_chk.Checked != false)
             {
-                if (PB_play.Image == PlayImg || PB_play.Image == PlayBlackImg)
+                if (PB_play.Image == PlayGryImg || PB_play.Image == PlayOrgImg)
                 {
                     //btn_2x.Text = "1X";
                     //playTimer.Interval = 1000;
@@ -1178,11 +1208,11 @@ namespace ImageScroller
                     scrollPause.Enabled = true;
                     btn_SnapTOVideo.Enabled = true;
                     button1.Enabled = true;
-                    PB_play.Image = PauseBackImg;
+                    PB_play.Image = PauseOrgImg;
                 }
                 else
                 {
-                    PB_play.Image = PlayBlackImg;
+                    PB_play.Image = PlayOrgImg;
                     btn_SnapTOVideo.Enabled = true;
                     pauseScroller();
                 }
@@ -1197,24 +1227,24 @@ namespace ImageScroller
 
         private void PB_play_MouseEnter(object sender, EventArgs e)
         {
-            if (PB_play.Image == PlayImg)
+            if (PB_play.Image == PlayGryImg)
             {
-                PB_play.Image = PlayBlackImg;
+                PB_play.Image = PlayOrgImg;
             }
-            else if (PB_play.Image == PauseImg)
+            else if (PB_play.Image == PauseGryImg)
             {
-                PB_play.Image = PauseBackImg;
+                PB_play.Image = PauseOrgImg;
             }
         }
         private void PB_play_MouseLeave(object sender, EventArgs e)
         {
-            if (PB_play.Image == PlayBlackImg)
+            if (PB_play.Image == PlayOrgImg)
             {
-                PB_play.Image = PlayImg;
+                PB_play.Image = PlayGryImg;
             }
-            else if (PB_play.Image == PauseBackImg)
+            else if (PB_play.Image == PauseOrgImg)
             {
-                PB_play.Image = PauseImg;
+                PB_play.Image = PauseGryImg;
             }
         }
 
@@ -1234,23 +1264,14 @@ namespace ImageScroller
         {
             unloadChannels();
             FormLoad();
-            PB_play.Image = PlayImg; // Set Play image
-            PB_X.Image = X1Img;   // Set X image
+            PB_play.Image = PlayGryImg; // Set Play image
+            PB_X.Image = x1GryImg;   // Set X image
             btn_2x.Text = "1X";
             playTimer.Interval = 1000;
             btn_SnapTOVideo.Enabled = true; // SnapShort
             button1.Enabled = true; // Btn Reset       
         }
-
-        private void PB_Stop_MouseEnter(object sender, EventArgs e)
-        {
-            PB_Stop.Image = StopBlackImg;
-        }
-        private void PB_Stop_MouseLeave(object sender, EventArgs e)
-        {
-            PB_Stop.Image = StopImg;
-        }
-
+      
         // Btn X1,X2.....X32
         private void btn_2x_Click(object sender, EventArgs e)
         {
@@ -1298,74 +1319,74 @@ namespace ImageScroller
                 playTimer.Interval = 500;
                 scrollPlay.Enabled = true;
                 btn_2x.Text = "2X";
-                PB_X.Image = X2BlackImg;
+                PB_X.Image = X2OrgImg;
             }
             else if (btn_2x.Text == "2X")
             {
                 playTimer.Interval = 250;
                 scrollPlay.Enabled = true;
                 btn_2x.Text = "4X";
-                PB_X.Image = X4BlackImg;
+                PB_X.Image = X4OrgImg;
             }
             else if (btn_2x.Text == "4X")
             {
                 playTimer.Interval = 125;
                 scrollPlay.Enabled = true;
                 btn_2x.Text = "8X";
-                PB_X.Image = X8BlackImg;
+                PB_X.Image = X8OrgImg;
             }
             else if (btn_2x.Text == "8X")
             {
                 playTimer.Interval = 62;
                 scrollPlay.Enabled = true;
                 btn_2x.Text = "16X";
-                PB_X.Image = X16BlackImg;
+                PB_X.Image = X16rgImg;
             }
             else if (btn_2x.Text == "16X")
             {
                 playTimer.Interval = 31;
                 scrollPlay.Enabled = true;
                 btn_2x.Text = "32X";
-                PB_X.Image = X32BlackImg;
+                PB_X.Image = X32rgImg;
             }
             else if (btn_2x.Text == "32X")
             {
                 playTimer.Interval = 1000;
                 scrollPlay.Enabled = true;
                 btn_2x.Text = "1X";
-                PB_X.Image = X1BlackImg;
+                PB_X.Image = X1OrgImg;
             }
         }
 
         private void PB_X_MouseEnter(object sender, EventArgs e)
         {
-            if (PB_X.Image == X1Img)
-            { PB_X.Image = X1BlackImg; }
-            else if (PB_X.Image == X2Img)
-            { PB_X.Image = X2BlackImg; }
-            else if (PB_X.Image == X4Img)
-            { PB_X.Image = X4BlackImg; }
-            else if (PB_X.Image == X8Img)
-            { PB_X.Image = X8BlackImg; }
-            else if (PB_X.Image == X16Img)
-            { PB_X.Image = X16BlackImg; }
-            else if (PB_X.Image == X32Img)
-            { PB_X.Image = X32BlackImg; }
+            if (PB_X.Image == x1GryImg)
+            { PB_X.Image = X1OrgImg; }
+            else if (PB_X.Image == x2GryImg)
+            { PB_X.Image = X2OrgImg; }
+            else if (PB_X.Image == x4GryImg)
+            { PB_X.Image = X4OrgImg; }
+            else if (PB_X.Image == x8GryImg)
+            { PB_X.Image = X8OrgImg; }
+            else if (PB_X.Image == x16GryImg)
+            { PB_X.Image = X16rgImg; }
+            else if (PB_X.Image == X32rgImg)
+            { PB_X.Image = X32rgImg; }
         }
         private void PB_X_MouseLeave(object sender, EventArgs e)
         {
-            if (PB_X.Image == X1BlackImg)
-            { PB_X.Image = X1Img; }
-            else if (PB_X.Image == X2BlackImg)
-            { PB_X.Image = X2Img; }
-            else if (PB_X.Image == X4BlackImg)
-            { PB_X.Image = X4Img; }
-            else if (PB_X.Image == X8BlackImg)
-            { PB_X.Image = X8Img; }
-            else if (PB_X.Image == X16BlackImg)
-            { PB_X.Image = X16Img; }
-            else if (PB_X.Image == X32BlackImg)
-            { PB_X.Image = X32Img; }
+            if (PB_X.Image == X1OrgImg)
+            { PB_X.Image = x1GryImg; }
+            else if (PB_X.Image == X2OrgImg)
+            { PB_X.Image = x2GryImg; }
+            else if (PB_X.Image == X4OrgImg)
+            { PB_X.Image = x4GryImg; }
+            else if (PB_X.Image == X8OrgImg)
+            { PB_X.Image = x8GryImg; }
+            else if (PB_X.Image == X16rgImg)
+            { PB_X.Image = x16GryImg; }
+            else if (PB_X.Image == X32rgImg)
+            { PB_X.Image = x32ryImg; }
         }
 
         // btn Snapshot
@@ -1395,6 +1416,7 @@ namespace ImageScroller
             {
                 if (keyData == (Keys.Control | Keys.S))
                 {
+                    pauseScroller();
                     if (checkBox1.Checked == false && checkBox2.Checked == false && checkBox3.Checked == false && checkBox4.Checked == false && checkBox5.Checked == false &&
                  checkBox6.Checked == false && checkBox7.Checked == false && checkBox8.Checked == false && checkBox9.Checked == false)
                     {
@@ -1402,8 +1424,7 @@ namespace ImageScroller
                     }
                     else
                     {
-                        beforeSave();
-                        pauseScroller();
+                        beforeSave();                       
                         // saveScreenshot();
                         frm_Popoup fP = new frm_Popoup(this);
                         fP.Show();
@@ -1427,7 +1448,7 @@ namespace ImageScroller
                     PB_play.Image = PauseImg;
                     btn_2x.Text = "1X";
                     playTimer.Interval = 1000;
-                    PB_X.Image = X1Img;
+                    PB_X.Image = x1GryImg;
                     btn_SnapTOVideo.Enabled = true;
                     button1.Enabled = true;
                     playScroller(); // Play Channels
@@ -1503,17 +1524,18 @@ namespace ImageScroller
 
         #region Mouse Click Event // Select PictureBox For SnapShot
         private void panel2_MouseClick(object sender, MouseEventArgs e)
-        {           
+        {
             if (checkBox1.Checked != true)
             {
                 pictureBox1.Padding = new Padding(3);
-                pictureBox1.BackColor = Color.Red;
+                pictureBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
                 checkBox1.Checked = true;
             }
             else
             {
                 pictureBox1.Padding = new Padding(0);
-                pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+                pictureBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
+                //pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
                 checkBox1.Checked = false;
             }
         }
@@ -1522,13 +1544,13 @@ namespace ImageScroller
             if (checkBox2.Checked != true)
             {
                 pictureBox2.Padding = new Padding(3);
-                pictureBox2.BackColor = Color.Red;
+                pictureBox2.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
                 checkBox2.Checked = true;
             }
             else
             {
                 pictureBox2.Padding = new Padding(0);
-                pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+                pictureBox2.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
                 checkBox2.Checked = false;
             }
         }
@@ -1537,13 +1559,13 @@ namespace ImageScroller
             if (checkBox3.Checked != true)
             {
                 pictureBox3.Padding = new Padding(3);
-                pictureBox3.BackColor = Color.Red;
+                pictureBox3.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
                 checkBox3.Checked = true;
             }
             else
             {
                 pictureBox3.Padding = new Padding(0);
-                pictureBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+                pictureBox3.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
                 checkBox3.Checked = false;
             }
         }
@@ -1552,13 +1574,13 @@ namespace ImageScroller
             if (checkBox4.Checked != true)
             {
                 pictureBox4.Padding = new Padding(3);
-                pictureBox4.BackColor = Color.Red;
+                pictureBox4.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
                 checkBox4.Checked = true;
             }
             else
             {
                 pictureBox4.Padding = new Padding(0);
-                pictureBox4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+                pictureBox4.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
                 checkBox4.Checked = false;
             }
         }
@@ -1567,13 +1589,13 @@ namespace ImageScroller
             if (checkBox5.Checked != true)
             {
                 pictureBox5.Padding = new Padding(3);
-                pictureBox5.BackColor = Color.Red;
+                pictureBox5.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
                 checkBox5.Checked = true;
             }
             else
             {
                 pictureBox5.Padding = new Padding(0);
-                pictureBox5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+                pictureBox5.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
                 checkBox5.Checked = false;
             }
         }
@@ -1582,28 +1604,29 @@ namespace ImageScroller
             if (checkBox6.Checked != true)
             {
                 pictureBox6.Padding = new Padding(3);
-                pictureBox6.BackColor = Color.Red;
+                pictureBox6.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
                 checkBox6.Checked = true;
             }
             else
             {
                 pictureBox6.Padding = new Padding(0);
-                pictureBox6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+                pictureBox6.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
                 checkBox6.Checked = false;
             }
         }
         private void panel8_MouseClick(object sender, MouseEventArgs e)
         {
+
             if (checkBox7.Checked != true)
             {
                 pictureBox7.Padding = new Padding(3);
-                pictureBox7.BackColor = Color.Red;
+                pictureBox7.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
                 checkBox7.Checked = true;
             }
             else
             {
                 pictureBox7.Padding = new Padding(0);
-                pictureBox7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+                pictureBox7.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
                 checkBox7.Checked = false;
             }
         }
@@ -1612,29 +1635,28 @@ namespace ImageScroller
             if (checkBox8.Checked != true)
             {
                 pictureBox8.Padding = new Padding(3);
-                pictureBox8.BackColor = Color.Red;
+                pictureBox8.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
                 checkBox8.Checked = true;
             }
             else
             {
                 pictureBox8.Padding = new Padding(0);
-                pictureBox8.BackColor = System.Drawing.SystemColors.ActiveCaption;
+                pictureBox8.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
                 checkBox8.Checked = false;
             }
         }
         private void panel10_MouseClick(object sender, MouseEventArgs e)
         {
-
             if (checkBox9.Checked != true)
             {
                 pictureBox9.Padding = new Padding(3);
-                pictureBox9.BackColor = Color.Red;
+                pictureBox9.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
                 checkBox9.Checked = true;
             }
             else
             {
                 pictureBox9.Padding = new Padding(0);
-                pictureBox9.BackColor = System.Drawing.SystemColors.ActiveCaption;
+                pictureBox9.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
                 checkBox9.Checked = false;
             }
         }
@@ -1664,5 +1686,183 @@ namespace ImageScroller
             }
         }
 
+        private void lab_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lab_Max_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Maximized;
+            }
+            else if (WindowState == FormWindowState.Maximized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void lab_mini_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+       
+        private void PB_Continue_Click(object sender, EventArgs e)
+        {
+            if (channel1_chk.Checked != false || channel2_chk.Checked != false || channel3_chk.Checked != false || channel4_chk.Checked != false ||
+               channel5_chk.Checked != false || channel6_chk.Checked != false || channel7_chk.Checked != false || channel8_chk.Checked != false || channel9_chk.Checked != false)
+            {
+                Get_ScrollIndex();
+                if (scrollIndex != 0)
+                {
+                    PB_play.Image = PauseGryImg;
+                    btn_2x.Text = "1X";
+                    playTimer.Interval = 1000;
+                    PB_X.Image = x1GryImg;
+                    btn_SnapTOVideo.Enabled = true;
+                    button1.Enabled = true;
+                    playScroller(); // Play Channels
+                }
+                else
+                {
+                    MessageBox.Show("First Time Auditing For This Project");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Check Atlist One Channel");
+            }
+        }
+        private void PB_CompAuditing_Click(object sender, EventArgs e)
+        {
+            Save_ScrollIndex(); // Save scroll index in Db            
+            pauseScroller();
+            try
+            {
+                Thread threadInput = new Thread(Set_SnaptoVideo); // ffmpeg Snap to Video    
+                threadInput.Start();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void PB_File_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Thread threadInput = new Thread(Create_Excel); // Create csv file from db
+                threadInput.Start();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void Browse_MouseEnter(object sender, EventArgs e)
+        {
+            string LableText = ((PictureBox)sender).Name;
+            //string LableText = this.Name;
+            switch (LableText)
+            {
+                case "PB_Continue":
+                    PB_Continue.Image = ContinueOrgImg;
+                    break;
+                case "PB_CompAuditing":
+                    PB_CompAuditing.Image = AuditOrgImg;
+                    break;
+                case "PB_File":
+                    PB_File.Image = FileOrgImg;
+                    break;
+                case "PB_Stop":
+                    PB_Stop.Image = StopOrgImg;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void Browse_MouseLeave(object sender, EventArgs e)
+        {
+            string LableText = ((PictureBox)sender).Name;
+            //string LableText = this.Name;
+            switch (LableText)
+            {
+                case "PB_Continue":
+                    PB_Continue.Image = ContinueGryImg;
+                    break;
+                case "PB_CompAuditing":
+                    PB_CompAuditing.Image = AuditGryImg;
+                    break;
+                case "PB_File":
+                    PB_File.Image = FileGryImg;
+                    break;
+                case "PB_Stop":
+                    PB_Stop.Image = StopGryImg;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void Lable_MouseEnter(object sender, EventArgs e)
+        {
+            string LableText = ((Label)sender).Name;
+            //string LableText = this.Name;
+            switch (LableText)
+            {              
+                case "lab_Close":
+                    lab_Close.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                    lab_Close.BackColor = System.Drawing.Color.WhiteSmoke;
+                    break;
+                case "lab_Max":
+                    lab_Max.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                    lab_Max.BackColor = System.Drawing.Color.WhiteSmoke;
+                    break;
+                case "lab_mini":
+                    lab_mini.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                    lab_mini.BackColor = System.Drawing.Color.WhiteSmoke;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void Lable_MouseLeave(object sender, EventArgs e)
+        {
+            string LableText = ((Label)sender).Name;
+            //string LableText = this.Name;
+            switch (LableText)
+            {
+                case "lab_Close":
+                    lab_Close.ForeColor = System.Drawing.Color.WhiteSmoke;
+                    lab_Close.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                    break;
+                case "lab_Max":
+                    lab_Max.ForeColor = System.Drawing.Color.WhiteSmoke;
+                    lab_Max.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                    break;
+                case "lab_mini":
+                    lab_mini.ForeColor = System.Drawing.Color.WhiteSmoke;
+                    lab_mini.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        ToolTip t1 = new ToolTip();
+        private void PB_play_MouseHover(object sender, EventArgs e)
+        {
+            //mh_Control.Text = "Play";
+            //mh_Control.Location = new Point(12, 10);
+           // t1.Show("Play", mh_play);
+        }
     }
 }

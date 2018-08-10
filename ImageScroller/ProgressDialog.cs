@@ -16,7 +16,11 @@ namespace ImageScroller
         {
             InitializeComponent();
            
-        }       
-       
+        }
+
+        private void lab_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

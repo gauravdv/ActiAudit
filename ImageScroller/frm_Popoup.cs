@@ -178,5 +178,22 @@ namespace ImageScroller
         {
             _ImageScrollerForm.playScroller();
         }
+
+        private void lab_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lab_Close_MouseEnter(object sender, EventArgs e)
+        {
+            lab_Close.ForeColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+            lab_Close.BackColor = System.Drawing.Color.WhiteSmoke;
+        }
+
+        private void lab_Close_MouseLeave(object sender, EventArgs e)
+        {
+            lab_Close.ForeColor = System.Drawing.Color.WhiteSmoke;
+            lab_Close.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+        }
     }
    }

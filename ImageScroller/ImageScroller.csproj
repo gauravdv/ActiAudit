@@ -249,5 +249,122 @@
   <ItemGroup>
     <None Include="Resources\Spinner.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Browse_30_gry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Browse_30_Org.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Browse_30_white .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clear_30_Org.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clear_30_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\merge%28orange%29_30 .png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\merge%28white%29_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resume_30_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resume_30_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Continue_30_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Continue_30_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\audit_30_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\audit_30_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_30_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_30_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause_30_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause_30_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop_30_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop_30_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play_30_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play_30_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1x_30_gry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1x_30_org.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2x_30_gry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2x_30_org.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4x_30_gry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4x_30_org.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8x_30_gry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8x_30_org.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16x_30_gry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16x_30_org.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\32x_30_gry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\32x_30_org.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spinner_Org.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spinner_30_Org.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Verifired_30_Org.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spinner_Org_148px.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search_18_Org.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actiudit_Name.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
