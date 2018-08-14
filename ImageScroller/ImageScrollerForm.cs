@@ -1394,9 +1394,164 @@ namespace ImageScroller
             btn_Stop.Enabled = true;
         }
         #endregion-----------------------------------------------------------------------------------------------------------------------------------------------------------
-
+        
 
         #region Load, Click
+
+        // PAneel Click For snap short
+        private void pbPannel_MouseClick(object sender, MouseEventArgs e)
+        {
+            string Name_Panel = ((Panel)sender).Name;
+            switch (Name_Panel)
+            {
+                case "panel2":
+                    if (checkBox1.Checked != true)
+                    {
+                        pictureBox1.Padding = new Padding(3);
+                        pictureBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                        checkBox1.Checked = true;
+                    }
+                    else
+                    {
+                        pictureBox1.Padding = new Padding(0);
+                        pictureBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
+                        checkBox1.Checked = false;
+                    }
+                    break;
+                case "panel3":
+                    if (checkBox2.Checked != true)
+                    {
+                        pictureBox2.Padding = new Padding(3);
+                        pictureBox2.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                        checkBox2.Checked = true;
+                    }
+                    else
+                    {
+                        pictureBox2.Padding = new Padding(0);
+                        pictureBox2.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
+                        checkBox2.Checked = false;
+                    }
+                    break;
+                case "panel4":
+                    if (checkBox3.Checked != true)
+                    {
+                        pictureBox3.Padding = new Padding(3);
+                        pictureBox3.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                        checkBox3.Checked = true;
+                    }
+                    else
+                    {
+                        pictureBox3.Padding = new Padding(0);
+                        pictureBox3.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
+                        checkBox3.Checked = false;
+                    }
+                    break;
+                case "panel5":
+                    if (checkBox4.Checked != true)
+                    {
+                        pictureBox4.Padding = new Padding(3);
+                        pictureBox4.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                        checkBox4.Checked = true;
+                    }
+                    else
+                    {
+                        pictureBox4.Padding = new Padding(0);
+                        pictureBox4.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
+                        checkBox4.Checked = false;
+                    }
+                    break;
+                case "panel6":
+                    if (checkBox5.Checked != true)
+                    {
+                        pictureBox5.Padding = new Padding(3);
+                        pictureBox5.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                        checkBox5.Checked = true;
+                    }
+                    else
+                    {
+                        pictureBox5.Padding = new Padding(0);
+                        pictureBox5.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
+                        checkBox5.Checked = false;
+                    }
+                    break;
+                case "panel7":
+                    if (checkBox6.Checked != true)
+                    {
+                        pictureBox6.Padding = new Padding(3);
+                        pictureBox6.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                        checkBox6.Checked = true;
+                    }
+                    else
+                    {
+                        pictureBox6.Padding = new Padding(0);
+                        pictureBox6.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
+                        checkBox6.Checked = false;
+                    }
+                    break;
+                case "panel8":
+                    if (checkBox7.Checked != true)
+                    {
+                        pictureBox7.Padding = new Padding(3);
+                        pictureBox7.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                        checkBox7.Checked = true;
+                    }
+                    else
+                    {
+                        pictureBox7.Padding = new Padding(0);
+                        pictureBox7.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
+                        checkBox7.Checked = false;
+                    }
+                    break;
+                case "panel9":
+                    if (checkBox8.Checked != true)
+                    {
+                        pictureBox8.Padding = new Padding(3);
+                        pictureBox8.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                        checkBox8.Checked = true;
+                    }
+                    else
+                    {
+                        pictureBox8.Padding = new Padding(0);
+                        pictureBox8.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
+                        checkBox8.Checked = false;
+                    }
+                    break;
+                case "panel10":
+                    if (checkBox9.Checked != true)
+                    {
+                        pictureBox9.Padding = new Padding(3);
+                        pictureBox9.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                        checkBox9.Checked = true;
+                    }
+                    else
+                    {
+                        pictureBox9.Padding = new Padding(0);
+                        pictureBox9.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
+                        checkBox9.Checked = false;
+                    }
+                    break;
+                default:
+                    break;
+                    //Single 
+                    //private void panel2_MouseClick(object sender, MouseEventArgs e)
+                    //{           
+                    //    if (checkBox1.Checked != true)
+                    //    {
+                    //        pictureBox1.Padding = new Padding(3);
+                    //        pictureBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
+                    //        checkBox1.Checked = true;
+                    //    }
+                    //    else
+                    //    {
+                    //        pictureBox1.Padding = new Padding(0);
+                    //        pictureBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
+                    //        //pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+                    //        checkBox1.Checked = false;
+                    //    }
+                    //}
+            }
+        }
+       
         // Load the Channel Set
         private void channel1_chk_Click(object sender, EventArgs e)
         {
@@ -1790,149 +1945,9 @@ namespace ImageScroller
         {
             //loadChannels(); // Load Channels
         }
-               
+
         #endregion-----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-        #region Mouse Click Event // Select PictureBox For SnapShot
-        private void panel2_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (checkBox1.Checked != true)
-            {
-                pictureBox1.Padding = new Padding(3);
-                pictureBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
-                checkBox1.Checked = true;
-            }
-            else
-            {
-                pictureBox1.Padding = new Padding(0);
-                pictureBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
-                //pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-                checkBox1.Checked = false;
-            }
-        }
-        private void panel3_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (checkBox2.Checked != true)
-            {
-                pictureBox2.Padding = new Padding(3);
-                pictureBox2.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
-                checkBox2.Checked = true;
-            }
-            else
-            {
-                pictureBox2.Padding = new Padding(0);
-                pictureBox2.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
-                checkBox2.Checked = false;
-            }
-        }
-        private void panel4_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (checkBox3.Checked != true)
-            {
-                pictureBox3.Padding = new Padding(3);
-                pictureBox3.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
-                checkBox3.Checked = true;
-            }
-            else
-            {
-                pictureBox3.Padding = new Padding(0);
-                pictureBox3.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
-                checkBox3.Checked = false;
-            }
-        }
-        private void panel5_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (checkBox4.Checked != true)
-            {
-                pictureBox4.Padding = new Padding(3);
-                pictureBox4.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
-                checkBox4.Checked = true;
-            }
-            else
-            {
-                pictureBox4.Padding = new Padding(0);
-                pictureBox4.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
-                checkBox4.Checked = false;
-            }
-        }
-        private void panel6_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (checkBox5.Checked != true)
-            {
-                pictureBox5.Padding = new Padding(3);
-                pictureBox5.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
-                checkBox5.Checked = true;
-            }
-            else
-            {
-                pictureBox5.Padding = new Padding(0);
-                pictureBox5.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
-                checkBox5.Checked = false;
-            }
-        }
-        private void panel7_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (checkBox6.Checked != true)
-            {
-                pictureBox6.Padding = new Padding(3);
-                pictureBox6.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
-                checkBox6.Checked = true;
-            }
-            else
-            {
-                pictureBox6.Padding = new Padding(0);
-                pictureBox6.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
-                checkBox6.Checked = false;
-            }
-        }
-        private void panel8_MouseClick(object sender, MouseEventArgs e)
-        {
-
-            if (checkBox7.Checked != true)
-            {
-                pictureBox7.Padding = new Padding(3);
-                pictureBox7.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
-                checkBox7.Checked = true;
-            }
-            else
-            {
-                pictureBox7.Padding = new Padding(0);
-                pictureBox7.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
-                checkBox7.Checked = false;
-            }
-        }
-        private void panel9_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (checkBox8.Checked != true)
-            {
-                pictureBox8.Padding = new Padding(3);
-                pictureBox8.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
-                checkBox8.Checked = true;
-            }
-            else
-            {
-                pictureBox8.Padding = new Padding(0);
-                pictureBox8.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
-                checkBox8.Checked = false;
-            }
-        }
-        private void panel10_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (checkBox9.Checked != true)
-            {
-                pictureBox9.Padding = new Padding(3);
-                pictureBox9.BackColor = System.Drawing.ColorTranslator.FromHtml("#f26222");
-                checkBox9.Checked = true;
-            }
-            else
-            {
-                pictureBox9.Padding = new Padding(0);
-                pictureBox9.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f5");
-                checkBox9.Checked = false;
-            }
-        }
-        #endregion
+           
                      
     }
 }

@@ -1043,7 +1043,7 @@
             this.Browse_PB7.Size = new System.Drawing.Size(30, 32);
             this.Browse_PB7.TabIndex = 922;
             this.Browse_PB7.TabStop = false;
-            this.Browse_PB7.Click += new System.EventHandler(this.Browse_PB7_Click);
+            this.Browse_PB7.Click += new System.EventHandler(this.Browse_Click);
             this.Browse_PB7.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
             this.Browse_PB7.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
             this.Browse_PB7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
@@ -1057,7 +1057,7 @@
             this.Browse_PB5.Size = new System.Drawing.Size(30, 32);
             this.Browse_PB5.TabIndex = 921;
             this.Browse_PB5.TabStop = false;
-            this.Browse_PB5.Click += new System.EventHandler(this.Browse_PB5_Click);
+            this.Browse_PB5.Click += new System.EventHandler(this.Browse_Click);
             this.Browse_PB5.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
             this.Browse_PB5.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
             this.Browse_PB5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
@@ -1071,7 +1071,7 @@
             this.Browse_PB3.Size = new System.Drawing.Size(30, 32);
             this.Browse_PB3.TabIndex = 919;
             this.Browse_PB3.TabStop = false;
-            this.Browse_PB3.Click += new System.EventHandler(this.Browse_PB3_Click);
+            this.Browse_PB3.Click += new System.EventHandler(this.Browse_Click);
             this.Browse_PB3.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
             this.Browse_PB3.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
             this.Browse_PB3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
@@ -1085,7 +1085,7 @@
             this.Browse_PB2.Size = new System.Drawing.Size(30, 32);
             this.Browse_PB2.TabIndex = 918;
             this.Browse_PB2.TabStop = false;
-            this.Browse_PB2.Click += new System.EventHandler(this.Browse_PB2_Click);
+            this.Browse_PB2.Click += new System.EventHandler(this.Browse_Click);
             this.Browse_PB2.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
             this.Browse_PB2.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
             this.Browse_PB2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
@@ -1099,7 +1099,7 @@
             this.Browse_PB1.Size = new System.Drawing.Size(30, 32);
             this.Browse_PB1.TabIndex = 914;
             this.Browse_PB1.TabStop = false;
-            this.Browse_PB1.Click += new System.EventHandler(this.Browse_PB1_Click);
+            this.Browse_PB1.Click += new System.EventHandler(this.Browse_Click);
             this.Browse_PB1.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
             this.Browse_PB1.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
             this.Browse_PB1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
@@ -1388,7 +1388,7 @@
             this.Browse_PB9.Size = new System.Drawing.Size(30, 32);
             this.Browse_PB9.TabIndex = 924;
             this.Browse_PB9.TabStop = false;
-            this.Browse_PB9.Click += new System.EventHandler(this.Browse_PB9_Click);
+            this.Browse_PB9.Click += new System.EventHandler(this.Browse_Click);
             this.Browse_PB9.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
             this.Browse_PB9.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
             this.Browse_PB9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
@@ -1402,7 +1402,7 @@
             this.Browse_PB8.Size = new System.Drawing.Size(30, 32);
             this.Browse_PB8.TabIndex = 923;
             this.Browse_PB8.TabStop = false;
-            this.Browse_PB8.Click += new System.EventHandler(this.Browse_PB8_Click);
+            this.Browse_PB8.Click += new System.EventHandler(this.Browse_Click);
             this.Browse_PB8.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
             this.Browse_PB8.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
             this.Browse_PB8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
@@ -1416,7 +1416,7 @@
             this.Browse_PB4.Size = new System.Drawing.Size(30, 32);
             this.Browse_PB4.TabIndex = 920;
             this.Browse_PB4.TabStop = false;
-            this.Browse_PB4.Click += new System.EventHandler(this.Browse_PB4_Click);
+            this.Browse_PB4.Click += new System.EventHandler(this.Browse_Click);
             this.Browse_PB4.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
             this.Browse_PB4.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
             this.Browse_PB4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
@@ -1430,7 +1430,7 @@
             this.Browse_PB6.Size = new System.Drawing.Size(30, 32);
             this.Browse_PB6.TabIndex = 922;
             this.Browse_PB6.TabStop = false;
-            this.Browse_PB6.Click += new System.EventHandler(this.Browse_PB6_Click);
+            this.Browse_PB6.Click += new System.EventHandler(this.Browse_Click);
             this.Browse_PB6.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
             this.Browse_PB6.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
             this.Browse_PB6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);

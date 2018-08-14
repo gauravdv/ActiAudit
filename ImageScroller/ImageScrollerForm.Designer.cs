@@ -189,7 +189,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(364, 193);
             this.panel2.TabIndex = 19;
-            this.panel2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseClick);
+            this.panel2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbPannel_MouseClick);
             // 
             // checkBox1
             // 
@@ -224,7 +224,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(364, 193);
             this.panel3.TabIndex = 21;
-            this.panel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseClick);
+            this.panel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbPannel_MouseClick);
             // 
             // checkBox2
             // 
@@ -259,7 +259,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(364, 193);
             this.panel4.TabIndex = 22;
-            this.panel4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseClick);
+            this.panel4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbPannel_MouseClick);
             // 
             // checkBox3
             // 
@@ -294,7 +294,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(364, 193);
             this.panel5.TabIndex = 23;
-            this.panel5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseClick);
+            this.panel5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbPannel_MouseClick);
             // 
             // checkBox4
             // 
@@ -329,7 +329,7 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(364, 193);
             this.panel6.TabIndex = 24;
-            this.panel6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel6_MouseClick);
+            this.panel6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbPannel_MouseClick);
             // 
             // checkBox5
             // 
@@ -364,7 +364,7 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(364, 193);
             this.panel7.TabIndex = 25;
-            this.panel7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel7_MouseClick);
+            this.panel7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbPannel_MouseClick);
             // 
             // checkBox6
             // 
@@ -399,7 +399,7 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(364, 193);
             this.panel8.TabIndex = 26;
-            this.panel8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel8_MouseClick);
+            this.panel8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbPannel_MouseClick);
             // 
             // checkBox7
             // 
@@ -434,7 +434,7 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(364, 193);
             this.panel9.TabIndex = 27;
-            this.panel9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel9_MouseClick);
+            this.panel9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbPannel_MouseClick);
             // 
             // checkBox8
             // 
@@ -469,7 +469,7 @@
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(364, 193);
             this.panel10.TabIndex = 28;
-            this.panel10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel10_MouseClick);
+            this.panel10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbPannel_MouseClick);
             // 
             // pictureBox9
             // 

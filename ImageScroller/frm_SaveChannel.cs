@@ -1291,104 +1291,68 @@ namespace ImageScroller
         }
 
         // For The btn_browser
-        private void Browse_PB1_Click(object sender, EventArgs e)
+        private void Browse_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
+            string Name_Btn = ((PictureBox)sender).Name;
+
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                vfile_path = ofd.FileName; // file path
-                channel1_txt.Text = vfile_path;
+                switch (Name_Btn)
+                {
+                    case "Browse_PB1":
+                            vfile_path = ofd.FileName; // file path
+                            channel1_txt.Text = vfile_path;
+                        break;
+                    case "Browse_PB2":
+                        vfile_path = ofd.FileName; // file path
+                        channel2_txt.Text = vfile_path;
+                        break;
+                    case "Browse_PB3":
+                        vfile_path = ofd.FileName; // file path
+                        channel3_txt.Text = vfile_path;
+                        break;
+                    case "Browse_PB4":
+                        vfile_path = ofd.FileName; // file path
+                        channel4_txt.Text = vfile_path;
+                        break;
+                    case "Browse_PB5":
+                        vfile_path = ofd.FileName; // file path
+                        channel5_txt.Text = vfile_path;
+                        break;
+                    case "Browse_PB6":
+                        vfile_path = ofd.FileName; // file path
+                        channel6_txt.Text = vfile_path;
+                        break;
+                    case "Browse_PB7":
+                        vfile_path = ofd.FileName; // file path
+                        channel7_txt.Text = vfile_path;
+                        break;
+                    case "Browse_PB8":
+                        vfile_path = ofd.FileName; // file path
+                        channel8_txt.Text = vfile_path;
+                        break;
+                    case "Browse_PB9":
+                        vfile_path = ofd.FileName; // file path
+                        channel9_txt.Text = vfile_path;
+                        break;
+                    default:
+                        break;
+                        // Single for every btn
+                        //private void Browse_PB1_Click(object sender, EventArgs e)
+                        //{
+                        //    OpenFileDialog ofd = new OpenFileDialog();
+                        //    if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        //    {
+                        //        vfile_path = ofd.FileName; // file path
+                        //        channel1_txt.Text = vfile_path;
+                        //    }
+                        //}   
+                }
             }
-        }
+        }        
 
-        private void Browse_PB2_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                vfile_path = ofd.FileName; // file path
-                channel2_txt.Text = vfile_path;
-            }
-        }
-
-        private void Browse_PB3_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                vfile_path = ofd.FileName; // file path
-                channel3_txt.Text = vfile_path;
-            }
-        }
-
-        private void Browse_PB4_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                vfile_path = ofd.FileName; // file path
-                channel4_txt.Text = vfile_path;
-            }
-        }
-
-        private void Browse_PB5_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                vfile_path = ofd.FileName; // file path
-                channel5_txt.Text = vfile_path;
-            }
-        }
-
-        private void Browse_PB6_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                vfile_path = ofd.FileName; // file path
-                channel6_txt.Text = vfile_path;
-            }
-        }
-
-        private void Browse_PB7_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                vfile_path = ofd.FileName; // file path
-                channel7_txt.Text = vfile_path;
-            }
-        }
-
-        private void Browse_PB8_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                vfile_path = ofd.FileName; // file path
-                channel8_txt.Text = vfile_path;
-            }
-        }
-
-        private void Browse_PB9_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                vfile_path = ofd.FileName; // file path
-                channel9_txt.Text = vfile_path;
-            }
-
-            //folderDlg.ShowNewFolderButton = true;
-            //DialogResult result = folderDlg.ShowDialog();
-            //if (result == DialogResult.OK)
-            //{
-            //    channel9_txt.Text = folderDlg.SelectedPath;
-            //    Environment.SpecialFolder root = folderDlg.RootFolder;
-            //}
-        }       
-
+       
         #endregion-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -1678,8 +1642,6 @@ namespace ImageScroller
             }
         }
         #endregion------------------------------------------------------------------------------------------------------------------
-
-
 
     }
 }
