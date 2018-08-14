@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lab_Close = new System.Windows.Forms.Label();
             this.btn_Save = new System.Windows.Forms.Button();
             this.txt_EnterInput = new System.Windows.Forms.TextBox();
             this.cmb_TagReason = new System.Windows.Forms.ComboBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.lab_Close = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel9.SuspendLayout();
             this.SuspendLayout();
@@ -42,7 +42,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox1.Controls.Add(this.lab_Close);
+            this.groupBox1.Controls.Add(this.panel9);
             this.groupBox1.Controls.Add(this.btn_Save);
             this.groupBox1.Controls.Add(this.txt_EnterInput);
             this.groupBox1.Controls.Add(this.cmb_TagReason);
@@ -52,6 +52,21 @@
             this.groupBox1.Size = new System.Drawing.Size(266, 209);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // lab_Close
+            // 
+            this.lab_Close.AutoSize = true;
+            this.lab_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(98)))), ((int)(((byte)(34)))));
+            this.lab_Close.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_Close.ForeColor = System.Drawing.Color.White;
+            this.lab_Close.Location = new System.Drawing.Point(248, 1);
+            this.lab_Close.Name = "lab_Close";
+            this.lab_Close.Size = new System.Drawing.Size(17, 20);
+            this.lab_Close.TabIndex = 908;
+            this.lab_Close.Text = "x";
+            this.lab_Close.Click += new System.EventHandler(this.lab_Close_Click);
+            this.lab_Close.MouseEnter += new System.EventHandler(this.lab_Close_MouseEnter);
+            this.lab_Close.MouseLeave += new System.EventHandler(this.lab_Close_MouseLeave);
             // 
             // btn_Save
             // 
@@ -87,37 +102,23 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(98)))), ((int)(((byte)(34)))));
             this.panel9.Controls.Add(this.label2);
-            this.panel9.Location = new System.Drawing.Point(12, 4);
+            this.panel9.Controls.Add(this.lab_Close);
+            this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(125, 25);
+            this.panel9.Size = new System.Drawing.Size(266, 25);
             this.panel9.TabIndex = 925;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(7, 2);
+            this.label2.Location = new System.Drawing.Point(7, 1);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 20);
+            this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 19;
             this.label2.Text = "Reason Tag";
-            // 
-            // lab_Close
-            // 
-            this.lab_Close.AutoSize = true;
-            this.lab_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(98)))), ((int)(((byte)(34)))));
-            this.lab_Close.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lab_Close.ForeColor = System.Drawing.Color.White;
-            this.lab_Close.Location = new System.Drawing.Point(249, -2);
-            this.lab_Close.Name = "lab_Close";
-            this.lab_Close.Size = new System.Drawing.Size(17, 20);
-            this.lab_Close.TabIndex = 908;
-            this.lab_Close.Text = "x";
-            this.lab_Close.Click += new System.EventHandler(this.lab_Close_Click);
-            this.lab_Close.MouseEnter += new System.EventHandler(this.lab_Close_MouseEnter);
-            this.lab_Close.MouseLeave += new System.EventHandler(this.lab_Close_MouseLeave);
             // 
             // frm_Popoup
             // 
@@ -125,7 +126,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(98)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(271, 217);
-            this.Controls.Add(this.panel9);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frm_Popoup";

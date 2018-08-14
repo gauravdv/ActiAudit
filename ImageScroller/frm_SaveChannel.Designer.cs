@@ -42,10 +42,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox_newProject = new System.Windows.Forms.GroupBox();
+            this.mv_NewProject = new System.Windows.Forms.Label();
             this.btn_AddProject = new System.Windows.Forms.Label();
             this.cmb_TagMaster = new System.Windows.Forms.ComboBox();
             this.lab_ProjectID = new System.Windows.Forms.Label();
             this.txt_Newproject = new System.Windows.Forms.TextBox();
+            this.mv_Channel = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -70,10 +72,16 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
+            this.mv_SelectVideo = new System.Windows.Forms.Label();
+            this.btn_VideoConvert = new System.Windows.Forms.PictureBox();
+            this.Btn_ClearPB = new System.Windows.Forms.PictureBox();
+            this.PB_VideoMerge = new System.Windows.Forms.PictureBox();
+            this.Browser_Video = new System.Windows.Forms.PictureBox();
             this.panel12 = new System.Windows.Forms.Panel();
             this.listView_VideoFile = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txt_Search = new System.Windows.Forms.TextBox();
             this.listView_ProjectName = new System.Windows.Forms.ListView();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -86,6 +94,19 @@
             this.lab_SelectProjectName = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.PB_Check1 = new System.Windows.Forms.PictureBox();
+            this.Browse_PB7 = new System.Windows.Forms.PictureBox();
+            this.Browse_PB5 = new System.Windows.Forms.PictureBox();
+            this.Browse_PB3 = new System.Windows.Forms.PictureBox();
+            this.Browse_PB2 = new System.Windows.Forms.PictureBox();
+            this.Browse_PB1 = new System.Windows.Forms.PictureBox();
+            this.PB_Check9 = new System.Windows.Forms.PictureBox();
+            this.PB_Check8 = new System.Windows.Forms.PictureBox();
+            this.PB_Check7 = new System.Windows.Forms.PictureBox();
+            this.PB_Check6 = new System.Windows.Forms.PictureBox();
+            this.PB_Check5 = new System.Windows.Forms.PictureBox();
+            this.PB_Check4 = new System.Windows.Forms.PictureBox();
+            this.PB_Check3 = new System.Windows.Forms.PictureBox();
             this.channel9_txt = new System.Windows.Forms.TextBox();
             this.channel8_txt = new System.Windows.Forms.TextBox();
             this.channel7_txt = new System.Windows.Forms.TextBox();
@@ -104,31 +125,14 @@
             this.channel5_chk = new System.Windows.Forms.CheckBox();
             this.channel9_chk = new System.Windows.Forms.CheckBox();
             this.channel1_chk = new System.Windows.Forms.CheckBox();
-            this.PB_Check1 = new System.Windows.Forms.PictureBox();
-            this.Browse_PB7 = new System.Windows.Forms.PictureBox();
-            this.Browse_PB5 = new System.Windows.Forms.PictureBox();
-            this.Browse_PB3 = new System.Windows.Forms.PictureBox();
-            this.Browse_PB2 = new System.Windows.Forms.PictureBox();
-            this.Browse_PB1 = new System.Windows.Forms.PictureBox();
-            this.PB_Check9 = new System.Windows.Forms.PictureBox();
-            this.PB_Check8 = new System.Windows.Forms.PictureBox();
-            this.PB_Check7 = new System.Windows.Forms.PictureBox();
-            this.PB_Check6 = new System.Windows.Forms.PictureBox();
-            this.PB_Check5 = new System.Windows.Forms.PictureBox();
-            this.PB_Check4 = new System.Windows.Forms.PictureBox();
-            this.PB_Check3 = new System.Windows.Forms.PictureBox();
             this.Browse_PB9 = new System.Windows.Forms.PictureBox();
             this.Browse_PB8 = new System.Windows.Forms.PictureBox();
             this.Browse_PB4 = new System.Windows.Forms.PictureBox();
             this.Browse_PB6 = new System.Windows.Forms.PictureBox();
             this.PB_Check2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btn_VideoConvert = new System.Windows.Forms.PictureBox();
-            this.Btn_ClearPB = new System.Windows.Forms.PictureBox();
-            this.PB_VideoMerge = new System.Windows.Forms.PictureBox();
-            this.Browser_Video = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.mv_Header = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -143,8 +147,13 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_VideoConvert)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_ClearPB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_VideoMerge)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Browser_Video)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel11.SuspendLayout();
             this.panel9.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -169,11 +178,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Browse_PB4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Browse_PB6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_Check2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_VideoConvert)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Btn_ClearPB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_VideoMerge)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Browser_Video)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,6 +190,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(98)))), ((int)(((byte)(34)))));
+            this.panel2.Controls.Add(this.mv_Header);
             this.panel2.Controls.Add(this.lab_ProjectType);
             this.panel2.Controls.Add(this.lab_ProjectName);
             this.panel2.Controls.Add(this.label6);
@@ -261,6 +266,7 @@
             this.lab_Close.Click += new System.EventHandler(this.lab_Close_Click);
             this.lab_Close.MouseEnter += new System.EventHandler(this.Lable_MouseEnter);
             this.lab_Close.MouseLeave += new System.EventHandler(this.Lable_MouseLeave);
+            this.lab_Close.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btn_AddProject_MouseMove);
             // 
             // lab_mini
             // 
@@ -275,6 +281,7 @@
             this.lab_mini.Click += new System.EventHandler(this.lab_mini_Click);
             this.lab_mini.MouseEnter += new System.EventHandler(this.Lable_MouseEnter);
             this.lab_mini.MouseLeave += new System.EventHandler(this.Lable_MouseLeave);
+            this.lab_mini.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btn_AddProject_MouseMove);
             // 
             // lab_Max
             // 
@@ -289,6 +296,7 @@
             this.lab_Max.Click += new System.EventHandler(this.lab_Max_Click);
             this.lab_Max.MouseEnter += new System.EventHandler(this.Lable_MouseEnter);
             this.lab_Max.MouseLeave += new System.EventHandler(this.Lable_MouseLeave);
+            this.lab_Max.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btn_AddProject_MouseMove);
             // 
             // panel10
             // 
@@ -326,6 +334,7 @@
             // 
             this.groupBox_newProject.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox_newProject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBox_newProject.Controls.Add(this.mv_NewProject);
             this.groupBox_newProject.Controls.Add(this.btn_AddProject);
             this.groupBox_newProject.Controls.Add(this.cmb_TagMaster);
             this.groupBox_newProject.Controls.Add(this.lab_ProjectID);
@@ -336,6 +345,15 @@
             this.groupBox_newProject.Size = new System.Drawing.Size(998, 63);
             this.groupBox_newProject.TabIndex = 0;
             this.groupBox_newProject.TabStop = false;
+            // 
+            // mv_NewProject
+            // 
+            this.mv_NewProject.AutoSize = true;
+            this.mv_NewProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mv_NewProject.Location = new System.Drawing.Point(952, 11);
+            this.mv_NewProject.Name = "mv_NewProject";
+            this.mv_NewProject.Size = new System.Drawing.Size(0, 13);
+            this.mv_NewProject.TabIndex = 917;
             // 
             // btn_AddProject
             // 
@@ -351,6 +369,7 @@
             this.btn_AddProject.Click += new System.EventHandler(this.btn_AddProject_Click);
             this.btn_AddProject.MouseEnter += new System.EventHandler(this.Lable_MouseEnter);
             this.btn_AddProject.MouseLeave += new System.EventHandler(this.Lable_MouseLeave);
+            this.btn_AddProject.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btn_AddProject_MouseMove);
             // 
             // cmb_TagMaster
             // 
@@ -378,6 +397,16 @@
             this.txt_Newproject.Size = new System.Drawing.Size(235, 23);
             this.txt_Newproject.TabIndex = 0;
             this.txt_Newproject.Tag = "";
+            // 
+            // mv_Channel
+            // 
+            this.mv_Channel.AutoSize = true;
+            this.mv_Channel.BackColor = System.Drawing.Color.Transparent;
+            this.mv_Channel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mv_Channel.Location = new System.Drawing.Point(704, 14);
+            this.mv_Channel.Name = "mv_Channel";
+            this.mv_Channel.Size = new System.Drawing.Size(0, 13);
+            this.mv_Channel.TabIndex = 5;
             // 
             // panel13
             // 
@@ -682,6 +711,7 @@
             // panel15
             // 
             this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(137)))), ((int)(((byte)(137)))));
+            this.panel15.Controls.Add(this.mv_SelectVideo);
             this.panel15.Controls.Add(this.btn_VideoConvert);
             this.panel15.Controls.Add(this.Btn_ClearPB);
             this.panel15.Controls.Add(this.PB_VideoMerge);
@@ -690,6 +720,66 @@
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(315, 60);
             this.panel15.TabIndex = 917;
+            // 
+            // mv_SelectVideo
+            // 
+            this.mv_SelectVideo.AutoSize = true;
+            this.mv_SelectVideo.Location = new System.Drawing.Point(117, 0);
+            this.mv_SelectVideo.Name = "mv_SelectVideo";
+            this.mv_SelectVideo.Size = new System.Drawing.Size(0, 13);
+            this.mv_SelectVideo.TabIndex = 916;
+            // 
+            // btn_VideoConvert
+            // 
+            this.btn_VideoConvert.Image = ((System.Drawing.Image)(resources.GetObject("btn_VideoConvert.Image")));
+            this.btn_VideoConvert.Location = new System.Drawing.Point(201, 13);
+            this.btn_VideoConvert.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
+            this.btn_VideoConvert.Name = "btn_VideoConvert";
+            this.btn_VideoConvert.Size = new System.Drawing.Size(30, 32);
+            this.btn_VideoConvert.TabIndex = 915;
+            this.btn_VideoConvert.TabStop = false;
+            this.btn_VideoConvert.Click += new System.EventHandler(this.btn_VideoConvert_Click);
+            this.btn_VideoConvert.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
+            this.btn_VideoConvert.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
+            this.btn_VideoConvert.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
+            // 
+            // Btn_ClearPB
+            // 
+            this.Btn_ClearPB.Image = ((System.Drawing.Image)(resources.GetObject("Btn_ClearPB.Image")));
+            this.Btn_ClearPB.Location = new System.Drawing.Point(258, 13);
+            this.Btn_ClearPB.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
+            this.Btn_ClearPB.Name = "Btn_ClearPB";
+            this.Btn_ClearPB.Size = new System.Drawing.Size(30, 32);
+            this.Btn_ClearPB.TabIndex = 914;
+            this.Btn_ClearPB.TabStop = false;
+            this.Btn_ClearPB.Click += new System.EventHandler(this.Btn_ClearPB_Click);
+            this.Btn_ClearPB.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
+            this.Btn_ClearPB.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
+            this.Btn_ClearPB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
+            // 
+            // PB_VideoMerge
+            // 
+            this.PB_VideoMerge.BackColor = System.Drawing.Color.Transparent;
+            this.PB_VideoMerge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PB_VideoMerge.Location = new System.Drawing.Point(23, 4);
+            this.PB_VideoMerge.Name = "PB_VideoMerge";
+            this.PB_VideoMerge.Size = new System.Drawing.Size(54, 53);
+            this.PB_VideoMerge.TabIndex = 908;
+            this.PB_VideoMerge.TabStop = false;
+            // 
+            // Browser_Video
+            // 
+            this.Browser_Video.Image = ((System.Drawing.Image)(resources.GetObject("Browser_Video.Image")));
+            this.Browser_Video.Location = new System.Drawing.Point(144, 14);
+            this.Browser_Video.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
+            this.Browser_Video.Name = "Browser_Video";
+            this.Browser_Video.Size = new System.Drawing.Size(30, 32);
+            this.Browser_Video.TabIndex = 913;
+            this.Browser_Video.TabStop = false;
+            this.Browser_Video.Click += new System.EventHandler(this.Browser_Video_Click);
+            this.Browser_Video.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
+            this.Browser_Video.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
+            this.Browser_Video.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
             // 
             // panel12
             // 
@@ -729,6 +819,17 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(255, 43);
             this.panel8.TabIndex = 915;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ImageScroller.Properties.Resources.Search_18_Org;
+            this.pictureBox1.Location = new System.Drawing.Point(216, 17);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(22, 21);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 918;
+            this.pictureBox1.TabStop = false;
             // 
             // txt_Search
             // 
@@ -811,6 +912,7 @@
             this.channels_grp.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.channels_grp.BackColor = System.Drawing.Color.WhiteSmoke;
             this.channels_grp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.channels_grp.Controls.Add(this.mv_Channel);
             this.channels_grp.Controls.Add(this.tableLayoutPanel2);
             this.channels_grp.Controls.Add(this.button2);
             this.channels_grp.Controls.Add(this.tableLayoutPanel1);
@@ -868,7 +970,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.41055F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.24567F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.43599F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 152F));
             this.tableLayoutPanel1.Controls.Add(this.PB_Check1, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.Browse_PB7, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.Browse_PB5, 2, 4);
@@ -921,85 +1023,243 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(692, 474);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
+            // PB_Check1
+            // 
+            this.PB_Check1.BackColor = System.Drawing.Color.Transparent;
+            this.PB_Check1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PB_Check1.Location = new System.Drawing.Point(541, 3);
+            this.PB_Check1.Name = "PB_Check1";
+            this.PB_Check1.Size = new System.Drawing.Size(54, 46);
+            this.PB_Check1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PB_Check1.TabIndex = 917;
+            this.PB_Check1.TabStop = false;
+            // 
+            // Browse_PB7
+            // 
+            this.Browse_PB7.Image = ((System.Drawing.Image)(resources.GetObject("Browse_PB7.Image")));
+            this.Browse_PB7.Location = new System.Drawing.Point(475, 324);
+            this.Browse_PB7.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
+            this.Browse_PB7.Name = "Browse_PB7";
+            this.Browse_PB7.Size = new System.Drawing.Size(30, 32);
+            this.Browse_PB7.TabIndex = 922;
+            this.Browse_PB7.TabStop = false;
+            this.Browse_PB7.Click += new System.EventHandler(this.Browse_PB7_Click);
+            this.Browse_PB7.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
+            this.Browse_PB7.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
+            this.Browse_PB7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
+            // 
+            // Browse_PB5
+            // 
+            this.Browse_PB5.Image = ((System.Drawing.Image)(resources.GetObject("Browse_PB5.Image")));
+            this.Browse_PB5.Location = new System.Drawing.Point(475, 222);
+            this.Browse_PB5.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
+            this.Browse_PB5.Name = "Browse_PB5";
+            this.Browse_PB5.Size = new System.Drawing.Size(30, 32);
+            this.Browse_PB5.TabIndex = 921;
+            this.Browse_PB5.TabStop = false;
+            this.Browse_PB5.Click += new System.EventHandler(this.Browse_PB5_Click);
+            this.Browse_PB5.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
+            this.Browse_PB5.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
+            this.Browse_PB5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
+            // 
+            // Browse_PB3
+            // 
+            this.Browse_PB3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Browse_PB3.BackgroundImage")));
+            this.Browse_PB3.Location = new System.Drawing.Point(475, 114);
+            this.Browse_PB3.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
+            this.Browse_PB3.Name = "Browse_PB3";
+            this.Browse_PB3.Size = new System.Drawing.Size(30, 32);
+            this.Browse_PB3.TabIndex = 919;
+            this.Browse_PB3.TabStop = false;
+            this.Browse_PB3.Click += new System.EventHandler(this.Browse_PB3_Click);
+            this.Browse_PB3.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
+            this.Browse_PB3.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
+            this.Browse_PB3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
+            // 
+            // Browse_PB2
+            // 
+            this.Browse_PB2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Browse_PB2.BackgroundImage")));
+            this.Browse_PB2.Location = new System.Drawing.Point(475, 62);
+            this.Browse_PB2.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
+            this.Browse_PB2.Name = "Browse_PB2";
+            this.Browse_PB2.Size = new System.Drawing.Size(30, 32);
+            this.Browse_PB2.TabIndex = 918;
+            this.Browse_PB2.TabStop = false;
+            this.Browse_PB2.Click += new System.EventHandler(this.Browse_PB2_Click);
+            this.Browse_PB2.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
+            this.Browse_PB2.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
+            this.Browse_PB2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
+            // 
+            // Browse_PB1
+            // 
+            this.Browse_PB1.Image = ((System.Drawing.Image)(resources.GetObject("Browse_PB1.Image")));
+            this.Browse_PB1.Location = new System.Drawing.Point(475, 10);
+            this.Browse_PB1.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
+            this.Browse_PB1.Name = "Browse_PB1";
+            this.Browse_PB1.Size = new System.Drawing.Size(30, 32);
+            this.Browse_PB1.TabIndex = 914;
+            this.Browse_PB1.TabStop = false;
+            this.Browse_PB1.Click += new System.EventHandler(this.Browse_PB1_Click);
+            this.Browse_PB1.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
+            this.Browse_PB1.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
+            this.Browse_PB1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
+            // 
+            // PB_Check9
+            // 
+            this.PB_Check9.BackColor = System.Drawing.Color.Transparent;
+            this.PB_Check9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PB_Check9.Location = new System.Drawing.Point(541, 419);
+            this.PB_Check9.Name = "PB_Check9";
+            this.PB_Check9.Size = new System.Drawing.Size(54, 44);
+            this.PB_Check9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PB_Check9.TabIndex = 912;
+            this.PB_Check9.TabStop = false;
+            // 
+            // PB_Check8
+            // 
+            this.PB_Check8.BackColor = System.Drawing.Color.Transparent;
+            this.PB_Check8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PB_Check8.Location = new System.Drawing.Point(541, 369);
+            this.PB_Check8.Name = "PB_Check8";
+            this.PB_Check8.Size = new System.Drawing.Size(54, 44);
+            this.PB_Check8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PB_Check8.TabIndex = 911;
+            this.PB_Check8.TabStop = false;
+            // 
+            // PB_Check7
+            // 
+            this.PB_Check7.BackColor = System.Drawing.Color.Transparent;
+            this.PB_Check7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PB_Check7.Location = new System.Drawing.Point(541, 317);
+            this.PB_Check7.Name = "PB_Check7";
+            this.PB_Check7.Size = new System.Drawing.Size(54, 46);
+            this.PB_Check7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PB_Check7.TabIndex = 911;
+            this.PB_Check7.TabStop = false;
+            // 
+            // PB_Check6
+            // 
+            this.PB_Check6.BackColor = System.Drawing.Color.Transparent;
+            this.PB_Check6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PB_Check6.Location = new System.Drawing.Point(541, 267);
+            this.PB_Check6.Name = "PB_Check6";
+            this.PB_Check6.Size = new System.Drawing.Size(54, 44);
+            this.PB_Check6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PB_Check6.TabIndex = 911;
+            this.PB_Check6.TabStop = false;
+            // 
+            // PB_Check5
+            // 
+            this.PB_Check5.BackColor = System.Drawing.Color.Transparent;
+            this.PB_Check5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PB_Check5.Location = new System.Drawing.Point(541, 215);
+            this.PB_Check5.Name = "PB_Check5";
+            this.PB_Check5.Size = new System.Drawing.Size(54, 46);
+            this.PB_Check5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PB_Check5.TabIndex = 911;
+            this.PB_Check5.TabStop = false;
+            // 
+            // PB_Check4
+            // 
+            this.PB_Check4.BackColor = System.Drawing.Color.Transparent;
+            this.PB_Check4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PB_Check4.Location = new System.Drawing.Point(541, 161);
+            this.PB_Check4.Name = "PB_Check4";
+            this.PB_Check4.Size = new System.Drawing.Size(54, 46);
+            this.PB_Check4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PB_Check4.TabIndex = 911;
+            this.PB_Check4.TabStop = false;
+            // 
+            // PB_Check3
+            // 
+            this.PB_Check3.BackColor = System.Drawing.Color.Transparent;
+            this.PB_Check3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.PB_Check3.Location = new System.Drawing.Point(541, 107);
+            this.PB_Check3.Name = "PB_Check3";
+            this.PB_Check3.Size = new System.Drawing.Size(54, 46);
+            this.PB_Check3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PB_Check3.TabIndex = 910;
+            this.PB_Check3.TabStop = false;
+            // 
             // channel9_txt
             // 
             this.channel9_txt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.channel9_txt.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.channel9_txt.Location = new System.Drawing.Point(127, 433);
+            this.channel9_txt.Location = new System.Drawing.Point(123, 433);
             this.channel9_txt.Name = "channel9_txt";
-            this.channel9_txt.Size = new System.Drawing.Size(335, 23);
+            this.channel9_txt.Size = new System.Drawing.Size(324, 23);
             this.channel9_txt.TabIndex = 25;
             // 
             // channel8_txt
             // 
             this.channel8_txt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.channel8_txt.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.channel8_txt.Location = new System.Drawing.Point(127, 379);
+            this.channel8_txt.Location = new System.Drawing.Point(123, 379);
             this.channel8_txt.Name = "channel8_txt";
-            this.channel8_txt.Size = new System.Drawing.Size(335, 23);
+            this.channel8_txt.Size = new System.Drawing.Size(324, 23);
             this.channel8_txt.TabIndex = 22;
             // 
             // channel7_txt
             // 
             this.channel7_txt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.channel7_txt.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.channel7_txt.Location = new System.Drawing.Point(127, 328);
+            this.channel7_txt.Location = new System.Drawing.Point(123, 328);
             this.channel7_txt.Name = "channel7_txt";
-            this.channel7_txt.Size = new System.Drawing.Size(335, 23);
+            this.channel7_txt.Size = new System.Drawing.Size(324, 23);
             this.channel7_txt.TabIndex = 19;
             // 
             // channel6_txt
             // 
             this.channel6_txt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.channel6_txt.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.channel6_txt.Location = new System.Drawing.Point(127, 277);
+            this.channel6_txt.Location = new System.Drawing.Point(123, 277);
             this.channel6_txt.Name = "channel6_txt";
-            this.channel6_txt.Size = new System.Drawing.Size(335, 23);
+            this.channel6_txt.Size = new System.Drawing.Size(324, 23);
             this.channel6_txt.TabIndex = 16;
             // 
             // channel5_txt
             // 
             this.channel5_txt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.channel5_txt.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.channel5_txt.Location = new System.Drawing.Point(127, 226);
+            this.channel5_txt.Location = new System.Drawing.Point(123, 226);
             this.channel5_txt.Name = "channel5_txt";
-            this.channel5_txt.Size = new System.Drawing.Size(335, 23);
+            this.channel5_txt.Size = new System.Drawing.Size(324, 23);
             this.channel5_txt.TabIndex = 13;
             // 
             // channel4_txt
             // 
             this.channel4_txt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.channel4_txt.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.channel4_txt.Location = new System.Drawing.Point(127, 173);
+            this.channel4_txt.Location = new System.Drawing.Point(123, 173);
             this.channel4_txt.Name = "channel4_txt";
-            this.channel4_txt.Size = new System.Drawing.Size(335, 23);
+            this.channel4_txt.Size = new System.Drawing.Size(324, 23);
             this.channel4_txt.TabIndex = 10;
             // 
             // channel3_txt
             // 
             this.channel3_txt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.channel3_txt.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.channel3_txt.Location = new System.Drawing.Point(127, 119);
+            this.channel3_txt.Location = new System.Drawing.Point(123, 119);
             this.channel3_txt.Name = "channel3_txt";
-            this.channel3_txt.Size = new System.Drawing.Size(335, 23);
+            this.channel3_txt.Size = new System.Drawing.Size(324, 23);
             this.channel3_txt.TabIndex = 7;
             // 
             // channel2_txt
             // 
             this.channel2_txt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.channel2_txt.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.channel2_txt.Location = new System.Drawing.Point(127, 66);
+            this.channel2_txt.Location = new System.Drawing.Point(123, 66);
             this.channel2_txt.Name = "channel2_txt";
-            this.channel2_txt.Size = new System.Drawing.Size(335, 23);
+            this.channel2_txt.Size = new System.Drawing.Size(324, 23);
             this.channel2_txt.TabIndex = 4;
             // 
             // channel1_txt
             // 
             this.channel1_txt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.channel1_txt.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.channel1_txt.Location = new System.Drawing.Point(127, 14);
+            this.channel1_txt.Location = new System.Drawing.Point(123, 14);
             this.channel1_txt.Name = "channel1_txt";
-            this.channel1_txt.Size = new System.Drawing.Size(335, 23);
+            this.channel1_txt.Size = new System.Drawing.Size(324, 23);
             this.channel1_txt.TabIndex = 1;
             // 
             // channel2_chk
@@ -1008,7 +1268,7 @@
             this.channel2_chk.AutoSize = true;
             this.channel2_chk.Location = new System.Drawing.Point(3, 67);
             this.channel2_chk.Name = "channel2_chk";
-            this.channel2_chk.Size = new System.Drawing.Size(118, 21);
+            this.channel2_chk.Size = new System.Drawing.Size(114, 21);
             this.channel2_chk.TabIndex = 5;
             this.channel2_chk.Text = "Channel 2";
             this.channel2_chk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1021,7 +1281,7 @@
             this.channel3_chk.AutoSize = true;
             this.channel3_chk.Location = new System.Drawing.Point(3, 120);
             this.channel3_chk.Name = "channel3_chk";
-            this.channel3_chk.Size = new System.Drawing.Size(118, 21);
+            this.channel3_chk.Size = new System.Drawing.Size(114, 21);
             this.channel3_chk.TabIndex = 8;
             this.channel3_chk.Text = "Channel 3";
             this.channel3_chk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1034,7 +1294,7 @@
             this.channel4_chk.AutoSize = true;
             this.channel4_chk.Location = new System.Drawing.Point(3, 174);
             this.channel4_chk.Name = "channel4_chk";
-            this.channel4_chk.Size = new System.Drawing.Size(118, 21);
+            this.channel4_chk.Size = new System.Drawing.Size(114, 21);
             this.channel4_chk.TabIndex = 11;
             this.channel4_chk.Text = "Channel 4";
             this.channel4_chk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1047,7 +1307,7 @@
             this.channel8_chk.AutoSize = true;
             this.channel8_chk.Location = new System.Drawing.Point(3, 380);
             this.channel8_chk.Name = "channel8_chk";
-            this.channel8_chk.Size = new System.Drawing.Size(118, 21);
+            this.channel8_chk.Size = new System.Drawing.Size(114, 21);
             this.channel8_chk.TabIndex = 23;
             this.channel8_chk.Text = "Channel 8";
             this.channel8_chk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1060,7 +1320,7 @@
             this.channel7_chk.AutoSize = true;
             this.channel7_chk.Location = new System.Drawing.Point(3, 329);
             this.channel7_chk.Name = "channel7_chk";
-            this.channel7_chk.Size = new System.Drawing.Size(118, 21);
+            this.channel7_chk.Size = new System.Drawing.Size(114, 21);
             this.channel7_chk.TabIndex = 20;
             this.channel7_chk.Text = "Channel 7";
             this.channel7_chk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1073,7 +1333,7 @@
             this.channel6_chk.AutoSize = true;
             this.channel6_chk.Location = new System.Drawing.Point(3, 278);
             this.channel6_chk.Name = "channel6_chk";
-            this.channel6_chk.Size = new System.Drawing.Size(118, 21);
+            this.channel6_chk.Size = new System.Drawing.Size(114, 21);
             this.channel6_chk.TabIndex = 17;
             this.channel6_chk.Text = "Channel 6";
             this.channel6_chk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1086,7 +1346,7 @@
             this.channel5_chk.AutoSize = true;
             this.channel5_chk.Location = new System.Drawing.Point(3, 227);
             this.channel5_chk.Name = "channel5_chk";
-            this.channel5_chk.Size = new System.Drawing.Size(118, 21);
+            this.channel5_chk.Size = new System.Drawing.Size(114, 21);
             this.channel5_chk.TabIndex = 14;
             this.channel5_chk.Text = "Channel 5";
             this.channel5_chk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1099,7 +1359,7 @@
             this.channel9_chk.AutoSize = true;
             this.channel9_chk.Location = new System.Drawing.Point(3, 434);
             this.channel9_chk.Name = "channel9_chk";
-            this.channel9_chk.Size = new System.Drawing.Size(118, 21);
+            this.channel9_chk.Size = new System.Drawing.Size(114, 21);
             this.channel9_chk.TabIndex = 26;
             this.channel9_chk.Text = "Channel 9";
             this.channel9_chk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1112,170 +1372,17 @@
             this.channel1_chk.AutoSize = true;
             this.channel1_chk.Location = new System.Drawing.Point(3, 15);
             this.channel1_chk.Name = "channel1_chk";
-            this.channel1_chk.Size = new System.Drawing.Size(118, 21);
+            this.channel1_chk.Size = new System.Drawing.Size(114, 21);
             this.channel1_chk.TabIndex = 2;
             this.channel1_chk.Text = "Channel 1";
             this.channel1_chk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.channel1_chk.UseVisualStyleBackColor = true;
             this.channel1_chk.CheckedChanged += new System.EventHandler(this.Channel_Check);
             // 
-            // PB_Check1
-            // 
-            this.PB_Check1.BackColor = System.Drawing.Color.Transparent;
-            this.PB_Check1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PB_Check1.Location = new System.Drawing.Point(559, 3);
-            this.PB_Check1.Name = "PB_Check1";
-            this.PB_Check1.Size = new System.Drawing.Size(54, 46);
-            this.PB_Check1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PB_Check1.TabIndex = 917;
-            this.PB_Check1.TabStop = false;
-            // 
-            // Browse_PB7
-            // 
-            this.Browse_PB7.Image = ((System.Drawing.Image)(resources.GetObject("Browse_PB7.Image")));
-            this.Browse_PB7.Location = new System.Drawing.Point(490, 324);
-            this.Browse_PB7.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
-            this.Browse_PB7.Name = "Browse_PB7";
-            this.Browse_PB7.Size = new System.Drawing.Size(30, 32);
-            this.Browse_PB7.TabIndex = 922;
-            this.Browse_PB7.TabStop = false;
-            this.Browse_PB7.Click += new System.EventHandler(this.Browse_PB7_Click);
-            this.Browse_PB7.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
-            this.Browse_PB7.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
-            // 
-            // Browse_PB5
-            // 
-            this.Browse_PB5.Image = ((System.Drawing.Image)(resources.GetObject("Browse_PB5.Image")));
-            this.Browse_PB5.Location = new System.Drawing.Point(490, 222);
-            this.Browse_PB5.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
-            this.Browse_PB5.Name = "Browse_PB5";
-            this.Browse_PB5.Size = new System.Drawing.Size(30, 32);
-            this.Browse_PB5.TabIndex = 921;
-            this.Browse_PB5.TabStop = false;
-            this.Browse_PB5.Click += new System.EventHandler(this.Browse_PB5_Click);
-            this.Browse_PB5.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
-            this.Browse_PB5.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
-            // 
-            // Browse_PB3
-            // 
-            this.Browse_PB3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Browse_PB3.BackgroundImage")));
-            this.Browse_PB3.Location = new System.Drawing.Point(490, 114);
-            this.Browse_PB3.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
-            this.Browse_PB3.Name = "Browse_PB3";
-            this.Browse_PB3.Size = new System.Drawing.Size(30, 32);
-            this.Browse_PB3.TabIndex = 919;
-            this.Browse_PB3.TabStop = false;
-            this.Browse_PB3.Click += new System.EventHandler(this.Browse_PB3_Click);
-            this.Browse_PB3.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
-            this.Browse_PB3.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
-            // 
-            // Browse_PB2
-            // 
-            this.Browse_PB2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Browse_PB2.BackgroundImage")));
-            this.Browse_PB2.Location = new System.Drawing.Point(490, 62);
-            this.Browse_PB2.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
-            this.Browse_PB2.Name = "Browse_PB2";
-            this.Browse_PB2.Size = new System.Drawing.Size(30, 32);
-            this.Browse_PB2.TabIndex = 918;
-            this.Browse_PB2.TabStop = false;
-            this.Browse_PB2.Click += new System.EventHandler(this.Browse_PB2_Click);
-            this.Browse_PB2.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
-            this.Browse_PB2.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
-            // 
-            // Browse_PB1
-            // 
-            this.Browse_PB1.Image = ((System.Drawing.Image)(resources.GetObject("Browse_PB1.Image")));
-            this.Browse_PB1.Location = new System.Drawing.Point(490, 10);
-            this.Browse_PB1.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
-            this.Browse_PB1.Name = "Browse_PB1";
-            this.Browse_PB1.Size = new System.Drawing.Size(30, 32);
-            this.Browse_PB1.TabIndex = 914;
-            this.Browse_PB1.TabStop = false;
-            this.Browse_PB1.Click += new System.EventHandler(this.Browse_PB1_Click);
-            this.Browse_PB1.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
-            this.Browse_PB1.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
-            // 
-            // PB_Check9
-            // 
-            this.PB_Check9.BackColor = System.Drawing.Color.Transparent;
-            this.PB_Check9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PB_Check9.Location = new System.Drawing.Point(559, 419);
-            this.PB_Check9.Name = "PB_Check9";
-            this.PB_Check9.Size = new System.Drawing.Size(54, 44);
-            this.PB_Check9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PB_Check9.TabIndex = 912;
-            this.PB_Check9.TabStop = false;
-            // 
-            // PB_Check8
-            // 
-            this.PB_Check8.BackColor = System.Drawing.Color.Transparent;
-            this.PB_Check8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PB_Check8.Location = new System.Drawing.Point(559, 369);
-            this.PB_Check8.Name = "PB_Check8";
-            this.PB_Check8.Size = new System.Drawing.Size(54, 44);
-            this.PB_Check8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PB_Check8.TabIndex = 911;
-            this.PB_Check8.TabStop = false;
-            // 
-            // PB_Check7
-            // 
-            this.PB_Check7.BackColor = System.Drawing.Color.Transparent;
-            this.PB_Check7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PB_Check7.Location = new System.Drawing.Point(559, 317);
-            this.PB_Check7.Name = "PB_Check7";
-            this.PB_Check7.Size = new System.Drawing.Size(54, 46);
-            this.PB_Check7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PB_Check7.TabIndex = 911;
-            this.PB_Check7.TabStop = false;
-            // 
-            // PB_Check6
-            // 
-            this.PB_Check6.BackColor = System.Drawing.Color.Transparent;
-            this.PB_Check6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PB_Check6.Location = new System.Drawing.Point(559, 267);
-            this.PB_Check6.Name = "PB_Check6";
-            this.PB_Check6.Size = new System.Drawing.Size(54, 44);
-            this.PB_Check6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PB_Check6.TabIndex = 911;
-            this.PB_Check6.TabStop = false;
-            // 
-            // PB_Check5
-            // 
-            this.PB_Check5.BackColor = System.Drawing.Color.Transparent;
-            this.PB_Check5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PB_Check5.Location = new System.Drawing.Point(559, 215);
-            this.PB_Check5.Name = "PB_Check5";
-            this.PB_Check5.Size = new System.Drawing.Size(54, 46);
-            this.PB_Check5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PB_Check5.TabIndex = 911;
-            this.PB_Check5.TabStop = false;
-            // 
-            // PB_Check4
-            // 
-            this.PB_Check4.BackColor = System.Drawing.Color.Transparent;
-            this.PB_Check4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PB_Check4.Location = new System.Drawing.Point(559, 161);
-            this.PB_Check4.Name = "PB_Check4";
-            this.PB_Check4.Size = new System.Drawing.Size(54, 46);
-            this.PB_Check4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PB_Check4.TabIndex = 911;
-            this.PB_Check4.TabStop = false;
-            // 
-            // PB_Check3
-            // 
-            this.PB_Check3.BackColor = System.Drawing.Color.Transparent;
-            this.PB_Check3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PB_Check3.Location = new System.Drawing.Point(559, 107);
-            this.PB_Check3.Name = "PB_Check3";
-            this.PB_Check3.Size = new System.Drawing.Size(54, 46);
-            this.PB_Check3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.PB_Check3.TabIndex = 910;
-            this.PB_Check3.TabStop = false;
-            // 
             // Browse_PB9
             // 
             this.Browse_PB9.Image = ((System.Drawing.Image)(resources.GetObject("Browse_PB9.Image")));
-            this.Browse_PB9.Location = new System.Drawing.Point(490, 426);
+            this.Browse_PB9.Location = new System.Drawing.Point(475, 426);
             this.Browse_PB9.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
             this.Browse_PB9.Name = "Browse_PB9";
             this.Browse_PB9.Size = new System.Drawing.Size(30, 32);
@@ -1284,11 +1391,12 @@
             this.Browse_PB9.Click += new System.EventHandler(this.Browse_PB9_Click);
             this.Browse_PB9.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
             this.Browse_PB9.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
+            this.Browse_PB9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
             // 
             // Browse_PB8
             // 
             this.Browse_PB8.Image = ((System.Drawing.Image)(resources.GetObject("Browse_PB8.Image")));
-            this.Browse_PB8.Location = new System.Drawing.Point(490, 376);
+            this.Browse_PB8.Location = new System.Drawing.Point(475, 376);
             this.Browse_PB8.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
             this.Browse_PB8.Name = "Browse_PB8";
             this.Browse_PB8.Size = new System.Drawing.Size(30, 32);
@@ -1297,11 +1405,12 @@
             this.Browse_PB8.Click += new System.EventHandler(this.Browse_PB8_Click);
             this.Browse_PB8.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
             this.Browse_PB8.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
+            this.Browse_PB8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
             // 
             // Browse_PB4
             // 
             this.Browse_PB4.Image = ((System.Drawing.Image)(resources.GetObject("Browse_PB4.Image")));
-            this.Browse_PB4.Location = new System.Drawing.Point(490, 168);
+            this.Browse_PB4.Location = new System.Drawing.Point(475, 168);
             this.Browse_PB4.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
             this.Browse_PB4.Name = "Browse_PB4";
             this.Browse_PB4.Size = new System.Drawing.Size(30, 32);
@@ -1310,11 +1419,12 @@
             this.Browse_PB4.Click += new System.EventHandler(this.Browse_PB4_Click);
             this.Browse_PB4.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
             this.Browse_PB4.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
+            this.Browse_PB4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
             // 
             // Browse_PB6
             // 
             this.Browse_PB6.Image = ((System.Drawing.Image)(resources.GetObject("Browse_PB6.Image")));
-            this.Browse_PB6.Location = new System.Drawing.Point(490, 274);
+            this.Browse_PB6.Location = new System.Drawing.Point(475, 274);
             this.Browse_PB6.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
             this.Browse_PB6.Name = "Browse_PB6";
             this.Browse_PB6.Size = new System.Drawing.Size(30, 32);
@@ -1323,77 +1433,18 @@
             this.Browse_PB6.Click += new System.EventHandler(this.Browse_PB6_Click);
             this.Browse_PB6.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
             this.Browse_PB6.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
+            this.Browse_PB6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Browse_PB1_MouseMove);
             // 
             // PB_Check2
             // 
             this.PB_Check2.BackColor = System.Drawing.Color.Transparent;
             this.PB_Check2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PB_Check2.Location = new System.Drawing.Point(559, 55);
+            this.PB_Check2.Location = new System.Drawing.Point(541, 55);
             this.PB_Check2.Name = "PB_Check2";
             this.PB_Check2.Size = new System.Drawing.Size(54, 46);
             this.PB_Check2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.PB_Check2.TabIndex = 909;
             this.PB_Check2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ImageScroller.Properties.Resources.Search_18_Org;
-            this.pictureBox1.Location = new System.Drawing.Point(216, 17);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(22, 21);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 918;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btn_VideoConvert
-            // 
-            this.btn_VideoConvert.Image = ((System.Drawing.Image)(resources.GetObject("btn_VideoConvert.Image")));
-            this.btn_VideoConvert.Location = new System.Drawing.Point(201, 13);
-            this.btn_VideoConvert.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
-            this.btn_VideoConvert.Name = "btn_VideoConvert";
-            this.btn_VideoConvert.Size = new System.Drawing.Size(30, 32);
-            this.btn_VideoConvert.TabIndex = 915;
-            this.btn_VideoConvert.TabStop = false;
-            this.btn_VideoConvert.Click += new System.EventHandler(this.btn_VideoConvert_Click);
-            this.btn_VideoConvert.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
-            this.btn_VideoConvert.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
-            // 
-            // Btn_ClearPB
-            // 
-            this.Btn_ClearPB.Image = ((System.Drawing.Image)(resources.GetObject("Btn_ClearPB.Image")));
-            this.Btn_ClearPB.Location = new System.Drawing.Point(258, 13);
-            this.Btn_ClearPB.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
-            this.Btn_ClearPB.Name = "Btn_ClearPB";
-            this.Btn_ClearPB.Size = new System.Drawing.Size(30, 32);
-            this.Btn_ClearPB.TabIndex = 914;
-            this.Btn_ClearPB.TabStop = false;
-            this.Btn_ClearPB.Click += new System.EventHandler(this.Btn_ClearPB_Click);
-            this.Btn_ClearPB.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
-            this.Btn_ClearPB.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
-            // 
-            // PB_VideoMerge
-            // 
-            this.PB_VideoMerge.BackColor = System.Drawing.Color.Transparent;
-            this.PB_VideoMerge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PB_VideoMerge.Location = new System.Drawing.Point(23, 4);
-            this.PB_VideoMerge.Name = "PB_VideoMerge";
-            this.PB_VideoMerge.Size = new System.Drawing.Size(54, 53);
-            this.PB_VideoMerge.TabIndex = 908;
-            this.PB_VideoMerge.TabStop = false;
-            // 
-            // Browser_Video
-            // 
-            this.Browser_Video.Image = ((System.Drawing.Image)(resources.GetObject("Browser_Video.Image")));
-            this.Browser_Video.Location = new System.Drawing.Point(144, 14);
-            this.Browser_Video.Margin = new System.Windows.Forms.Padding(25, 10, 3, 3);
-            this.Browser_Video.Name = "Browser_Video";
-            this.Browser_Video.Size = new System.Drawing.Size(30, 32);
-            this.Browser_Video.TabIndex = 913;
-            this.Browser_Video.TabStop = false;
-            this.Browser_Video.Click += new System.EventHandler(this.Browser_Video_Click);
-            this.Browser_Video.MouseEnter += new System.EventHandler(this.Browse_MouseEnter);
-            this.Browser_Video.MouseLeave += new System.EventHandler(this.Browse_MouseLeave);
             // 
             // pictureBox2
             // 
@@ -1415,6 +1466,15 @@
             this.label4.Size = new System.Drawing.Size(99, 25);
             this.label4.TabIndex = 926;
             this.label4.Text = "ActiAudit";
+            // 
+            // mv_Header
+            // 
+            this.mv_Header.AutoSize = true;
+            this.mv_Header.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mv_Header.Location = new System.Drawing.Point(1145, 0);
+            this.mv_Header.Name = "mv_Header";
+            this.mv_Header.Size = new System.Drawing.Size(0, 13);
+            this.mv_Header.TabIndex = 927;
             // 
             // frm_SaveChannel
             // 
@@ -1462,15 +1522,22 @@
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_VideoConvert)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Btn_ClearPB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_VideoMerge)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Browser_Video)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.channels_grp.ResumeLayout(false);
+            this.channels_grp.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1493,11 +1560,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Browse_PB4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Browse_PB6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_Check2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_VideoConvert)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Btn_ClearPB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_VideoMerge)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Browser_Video)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1605,6 +1667,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label mv_Channel;
+        private System.Windows.Forms.Label mv_SelectVideo;
+        private System.Windows.Forms.Label mv_NewProject;
+        private System.Windows.Forms.Label mv_Header;
     }
 }
 
